@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "the-abandoned-zone:item/sculk_dust"
+  }
+}

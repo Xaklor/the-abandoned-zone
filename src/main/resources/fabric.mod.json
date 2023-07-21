@@ -16,10 +16,10 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.xaklor.ExampleMod"
+			"com.xaklor.TheAbandonedZoneMod"
 		],
 		"client": [
-			"com.xaklor.ExampleModClient"
+			"com.xaklor.TheAbandonedZoneModClient"
 		]
 	},
 	"mixins": [
