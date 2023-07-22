@@ -24,10 +24,14 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	//region ITEMS
 	public static final Item AMETHYST_DUST = new Item(new FabricItemSettings());
 	public static final Item COAL_DUST = new Item(new FabricItemSettings());
+	public static final Item COLORFUL_DUST = new Item(new FabricItemSettings());
 	public static final Item CORPSE_DUST = new Item(new FabricItemSettings());
 	public static final Item DIAMOND_DUST = new Item(new FabricItemSettings());
 	public static final Item EMERALD_DUST = new Item(new FabricItemSettings());
+	public static final Item FLOUR = new Item(new FabricItemSettings());
+	public static final Item FOOD_DUST = new Item(new FabricItemSettings());
 	public static final Item FUNGAL_DUST = new Item(new FabricItemSettings());
+	public static final Item GEMSTONE_BLEND = new Item(new FabricItemSettings());
 	public static final Item GLASS_DUST = new Item(new FabricItemSettings());
 	public static final Item GRASS_DUST = new Item(new FabricItemSettings());
 	public static final Item INFERNAL_DUST = new Item(new FabricItemSettings());
@@ -36,9 +40,13 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final Item MYSTIC_DUST = new Item(new FabricItemSettings());
 	public static final Item NETHERITE_DUST = new Item(new FabricItemSettings());
 	public static final Item POWDERED_EGG = new Item(new FabricItemSettings());
+	public static final Item POWDERED_MILK	 = new Item(new FabricItemSettings());
 	public static final Item QUARTZ_DUST = new Item(new FabricItemSettings());
+	public static final Item RARE_DUST = new Item(new FabricItemSettings());
+	public static final Item RESONATING_DUST = new Item(new FabricItemSettings());
 	public static final Item SCULK_DUST = new Item(new FabricItemSettings());
 	public static final Item SOIL_DUST = new Item(new FabricItemSettings());
+	public static final Item SPECTRAL_DUST = new Item(new FabricItemSettings());
 	public static final Item WAXY_DUST = new Item(new FabricItemSettings());
 	public static final Item WOOD_DUST = new Item(new FabricItemSettings());
 	//endregion
@@ -66,7 +74,15 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(AMETHYST_DUST);
 				entries.add(QUARTZ_DUST);
 				entries.add(POWDERED_EGG);
+				entries.add(POWDERED_MILK);
+				entries.add(FLOUR);
+				entries.add(FOOD_DUST);
 				entries.add(CORPSE_DUST);
+				entries.add(COLORFUL_DUST);
+				entries.add(SPECTRAL_DUST);
+				entries.add(RESONATING_DUST);
+				entries.add(RARE_DUST);
+				entries.add(GEMSTONE_BLEND);
 			})
 			.build();
 
@@ -80,10 +96,14 @@ public class TheAbandonedZoneMod implements ModInitializer {
 		//region ITEMS
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "amethyst_dust"), AMETHYST_DUST);
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "coal_dust"), COAL_DUST);
+		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "colorful_dust"), COLORFUL_DUST);
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "corpse_dust"), CORPSE_DUST);
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "diamond_dust"), DIAMOND_DUST);
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "emerald_dust"), EMERALD_DUST);
+		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "flour"), FLOUR);
+		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "food_dust"), FOOD_DUST);
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "fungal_dust"), FUNGAL_DUST);
+		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "gemstone_blend"), GEMSTONE_BLEND);
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "glass_dust"), GLASS_DUST);
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "grass_dust"), GRASS_DUST);
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "infernal_dust"), INFERNAL_DUST);
@@ -92,9 +112,13 @@ public class TheAbandonedZoneMod implements ModInitializer {
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "mystic_dust"), MYSTIC_DUST);
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "netherite_dust"), NETHERITE_DUST);
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "powdered_egg"), POWDERED_EGG);
+		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "powdered_milk"), POWDERED_MILK);
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "quartz_dust"), QUARTZ_DUST);
+		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "rare_dust"), RARE_DUST);
+		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "resonating_dust"), RESONATING_DUST);
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "sculk_dust"), SCULK_DUST);
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "soil_dust"), SOIL_DUST);
+		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "spectral_dust"), SPECTRAL_DUST);
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "waxy_dust"), WAXY_DUST);
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "wood_dust"), WOOD_DUST);
 		//endregion
