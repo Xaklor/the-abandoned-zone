@@ -4,7 +4,12 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.GlassBlock;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -20,6 +25,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
     public static final Logger LOGGER = LoggerFactory.getLogger("the-abandoned-zone");
+	public static final Block CRYSTAL_STONE = new GlassBlock(FabricBlockSettings.create().nonOpaque().solidBlock(Blocks::never));
 
 	//region ITEMS
 	public static final Item AMETHYST_DUST = new Item(new FabricItemSettings());
@@ -124,6 +130,11 @@ public class TheAbandonedZoneMod implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 		// LOGGER.info("Hello Fabric world!");
+
+		Registry.register(Registries.BLOCK, new Identifier("the-abandoned-zone", "crystal_stone"), CRYSTAL_STONE);
+		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "crystal_stone"), new BlockItem(CRYSTAL_STONE, new FabricItemSettings()));
+
+		// var temp = Blocks.BROWN_STAINED_GLASS;
 
 		//region ITEMS
 		Registry.register(Registries.ITEM, new Identifier("the-abandoned-zone", "amethyst_dust"), AMETHYST_DUST);
