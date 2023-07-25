@@ -129,6 +129,9 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(RESONATING_DUST);
 				entries.add(RARE_DUST);
 				entries.add(GEMSTONE_BLEND);
+
+				// example of adding a block item using AbandonedZoneBlock wrapper class
+				entries.add(CRYSTAL_STONE.item);
 			})
 			.build();
 

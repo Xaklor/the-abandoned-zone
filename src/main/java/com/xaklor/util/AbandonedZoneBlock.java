@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.TransparentBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -20,7 +21,7 @@ public class AbandonedZoneBlock {
     public final Identifier id;
     public final BlockType type;
     public final Block block;
-    public final Item blockItem;
+    public final Item item;
     public final boolean hasItem;
     public final int burnTime;
 
@@ -44,10 +45,10 @@ public class AbandonedZoneBlock {
             default -> this.block = new Block(settings);
         }
         this.hasItem = hasItem;
-        this.blockItem = this.hasItem ? new BlockItem(block, new FabricItemSettings()) : null;
+        this.item = this.hasItem ? new BlockItem(block, new FabricItemSettings()) : Items.AIR;
         TheAbandonedZoneMod.BLOCKS.add(this);
         if (hasItem)
-            TheAbandonedZoneMod.ITEMS.add(this.blockItem);
+            TheAbandonedZoneMod.ITEMS.add(this.item);
         this.burnTime = burnTime;
         this.register();
     }
@@ -63,9 +64,9 @@ public class AbandonedZoneBlock {
     private void register() {
         Registry.register(Registries.BLOCK, this.id, this.block);
         if (this.hasItem)
-            Registry.register(Registries.ITEM, this.id, this.blockItem);
+            Registry.register(Registries.ITEM, this.id, this.item);
         if (this.burnTime > 0)
-            FuelRegistry.INSTANCE.add(blockItem, this.burnTime);
+            FuelRegistry.INSTANCE.add(this.item, this.burnTime);
     }
 
 }
