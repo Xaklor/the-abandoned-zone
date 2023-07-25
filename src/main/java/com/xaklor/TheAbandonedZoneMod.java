@@ -3,11 +3,11 @@ package com.xaklor;
 import com.xaklor.util.AbandonedZoneBlock;
 import com.xaklor.util.AbandonedZoneBlock.BlockType;
 import com.xaklor.util.AbandonedZoneItem;
-import com.xaklor.util.AbandonedZoneRegisterable;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -28,7 +28,8 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final String MOD_ID = "the_abandoned_zone";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-	public static final List<AbandonedZoneRegisterable> REGISTERABLE = new ArrayList<>();
+	public static final List<Item> ITEMS = new ArrayList<>();
+	public static final List<AbandonedZoneBlock> BLOCKS = new ArrayList<>();
 
 	//region ITEMS
 	public static final Item AMETHYST_DUST = new AbandonedZoneItem("amethyst_dust", new FabricItemSettings());
@@ -85,18 +86,13 @@ public class TheAbandonedZoneMod implements ModInitializer {
 			.icon(() -> new ItemStack(COAL_DUST))
 			.displayName(Text.translatable("itemGroup.the_abandoned_zone.all_items"))
 			.entries((context, entries) -> {
-				for (AbandonedZoneRegisterable r : REGISTERABLE)
-					if (r instanceof Item item)
-						entries.add(item);
-					else if (r instanceof AbandonedZoneBlock b && b.hasItem)
-						entries.add(b.blockItem);
+				for (Item item : ITEMS)
+					entries.add(item);
 			})
 			.build();
 
 	@Override
 	public void onInitialize() {
-		REGISTERABLE.forEach(AbandonedZoneRegisterable::register);
-
 		// item group
 		Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "all_items"), ALL_ITEMS);
 	}

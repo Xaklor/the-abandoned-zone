@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier;
 /**
  * Class for simplifying block initialization and registration
  */
-public class AbandonedZoneBlock implements AbandonedZoneRegisterable {
+public class AbandonedZoneBlock {
 
     public final Identifier id;
     public final BlockType type;
@@ -45,8 +45,11 @@ public class AbandonedZoneBlock implements AbandonedZoneRegisterable {
         }
         this.hasItem = hasItem;
         this.blockItem = this.hasItem ? new BlockItem(block, new FabricItemSettings()) : null;
-        TheAbandonedZoneMod.REGISTERABLE.add(this);
+        TheAbandonedZoneMod.BLOCKS.add(this);
+        if (hasItem)
+            TheAbandonedZoneMod.ITEMS.add(this.blockItem);
         this.burnTime = burnTime;
+        this.register();
     }
 
     public AbandonedZoneBlock(String id, AbstractBlock.Settings settings, BlockType blockType, int burnTime) {
@@ -57,8 +60,7 @@ public class AbandonedZoneBlock implements AbandonedZoneRegisterable {
         this(id, settings, blockType, true, 0);
     }
 
-    @Override
-    public void register() {
+    private void register() {
         Registry.register(Registries.BLOCK, this.id, this.block);
         if (this.hasItem)
             Registry.register(Registries.ITEM, this.id, this.blockItem);

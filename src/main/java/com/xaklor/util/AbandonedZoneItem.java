@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 /**
  * Class for simplifying item initialization and registration
  */
-public class AbandonedZoneItem extends Item implements AbandonedZoneRegisterable {
+public class AbandonedZoneItem extends Item {
 
     public final Identifier id;
     public final int burnTime;
@@ -22,17 +22,17 @@ public class AbandonedZoneItem extends Item implements AbandonedZoneRegisterable
      */
     public AbandonedZoneItem(String id, Settings settings, int burnTime) {
         super(settings);
-        TheAbandonedZoneMod.REGISTERABLE.add(this);
+        TheAbandonedZoneMod.ITEMS.add(this);
         this.burnTime = burnTime;
         this.id = new Identifier(TheAbandonedZoneMod.MOD_ID, id);
+        this.register();
     }
 
     public AbandonedZoneItem(String id, Settings settings) {
         this(id, settings, 0);
     }
 
-    @Override
-    public void register() {
+    private void register() {
         Registry.register(Registries.ITEM, this.id, this);
         if (this.burnTime > 0)
             FuelRegistry.INSTANCE.add(this, this.burnTime);

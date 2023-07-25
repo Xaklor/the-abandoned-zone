@@ -10,10 +10,9 @@ public class TheAbandonedZoneModClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
 
-		// this allows for a translucent block
-		TheAbandonedZoneMod.REGISTERABLE.forEach((r) -> {
-			// can definitely be cleaned up but lazy
-			if (r instanceof AbandonedZoneBlock b && b.type == AbandonedZoneBlock.BlockType.TRANSPARENT)
+		// allows for translucent blocks
+		TheAbandonedZoneMod.BLOCKS.forEach((b) -> {
+			if (b.type == AbandonedZoneBlock.BlockType.TRANSPARENT)
 				BlockRenderLayerMap.INSTANCE.putBlock(b.block, RenderLayer.getTranslucent());
 		});
 	}
