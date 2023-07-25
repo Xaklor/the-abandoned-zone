@@ -86,8 +86,49 @@ public class TheAbandonedZoneMod implements ModInitializer {
 			.icon(() -> new ItemStack(COAL_DUST))
 			.displayName(Text.translatable("itemGroup.the_abandoned_zone.all_items"))
 			.entries((context, entries) -> {
-				for (Item item : ITEMS)
-					entries.add(item);
+				entries.add(DULL_ORE);
+				entries.add(BRILLIANT_INGOT);
+				entries.add(BRILLIANT_NUGGET);
+				entries.add(HAMMER_HEAD);
+				entries.add(HAMMER_HANDLE);
+				entries.add(STAR_HAMMER);
+				entries.add(FUEL_CANISTER);
+				entries.add(INSTANT_CAKE);
+				entries.add(NUTRIENT_POWDER);
+				entries.add(ROYAL_HEART);
+				entries.add(STEEL_BONE);
+				entries.add(SPIRIT_NEWBORN);
+				entries.add(MALEVOLENT_SPIRIT);
+				entries.add(BENEVOLENT_SPIRIT);
+				entries.add(AMULET_OF_GREED);
+				entries.add(WISHING_PENDANT);
+				entries.add(WOOD_DUST);
+				entries.add(GRASS_DUST);
+				entries.add(SOIL_DUST);
+				entries.add(FUNGAL_DUST);
+				entries.add(INFERNAL_DUST);
+				entries.add(MYSTIC_DUST);
+				entries.add(GLASS_DUST);
+				entries.add(WAXY_DUST);
+				entries.add(SCULK_DUST);
+				entries.add(COAL_DUST);
+				entries.add(METAL_DUST);
+				entries.add(EMERALD_DUST);
+				entries.add(LAPIS_LAZULI_DUST);
+				entries.add(DIAMOND_DUST);
+				entries.add(NETHERITE_DUST);
+				entries.add(AMETHYST_DUST);
+				entries.add(QUARTZ_DUST);
+				entries.add(POWDERED_EGG);
+				entries.add(POWDERED_MILK);
+				entries.add(FLOUR);
+				entries.add(FOOD_DUST);
+				entries.add(CORPSE_DUST);
+				entries.add(COLORFUL_DUST);
+				entries.add(SPECTRAL_DUST);
+				entries.add(RESONATING_DUST);
+				entries.add(RARE_DUST);
+				entries.add(GEMSTONE_BLEND);
 			})
 			.build();
 
@@ -95,5 +136,6 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public void onInitialize() {
 		// item group
 		Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "all_items"), ALL_ITEMS);
+
 	}
 }
