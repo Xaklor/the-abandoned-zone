@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "the-abandoned-zone",
+	"id": "the_abandoned_zone",
 	"version": "${version}",
 	"name": "The Abandoned Zone",
 	"description": "This is an example description! Tell everyone what your mod is about!",
@@ -12,7 +12,7 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/the-abandoned-zone/icon.png",
+	"icon": "assets/the_abandoned_zone/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
@@ -23,9 +23,9 @@
 		]
 	},
 	"mixins": [
-		"the-abandoned-zone.mixins.json",
+		"the_abandoned_zone.mixins.json",
 		{
-			"config": "the-abandoned-zone.client.mixins.json",
+			"config": "the_abandoned_zone.client.mixins.json",
 			"environment": "client"
 		}
 	],

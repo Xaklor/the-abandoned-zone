@@ -22,7 +22,7 @@ loom {
     splitEnvironmentSourceSets()
 
 	mods {
-		"the-abandoned-zone" {
+		"the_abandoned_zone" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}
