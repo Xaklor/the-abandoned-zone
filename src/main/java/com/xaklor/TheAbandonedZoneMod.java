@@ -35,11 +35,16 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final Item AMETHYST_DUST = new AbandonedZoneItem("amethyst_dust", new FabricItemSettings());
 	public static final Item AMULET_OF_GREED = new AbandonedZoneItem("amulet_of_greed", new FabricItemSettings());
 	public static final Item BENEVOLENT_SPIRIT = new AbandonedZoneItem("benevolent_spirit", new FabricItemSettings());
+	public static final Item BLUE_SAPPHIRE = new AbandonedZoneItem("blue_sapphire", new FabricItemSettings());
+	public static final Item BLUE_SAPPHIRE_PICK = new AbandonedZoneItem("blue_sapphire_pick", new FabricItemSettings());
 	public static final Item BRILLIANT_INGOT = new AbandonedZoneItem("brilliant_ingot", new FabricItemSettings());
 	public static final Item BRILLIANT_NUGGET = new AbandonedZoneItem("brilliant_nugget", new FabricItemSettings());
+	public static final Item BRILLIANT_PICK = new AbandonedZoneItem("brilliant_pick", new FabricItemSettings());
 	public static final Item COAL_DUST = new AbandonedZoneItem("coal_dust", new FabricItemSettings());
 	public static final Item COLORFUL_DUST = new AbandonedZoneItem("colorful_dust", new FabricItemSettings());
 	public static final Item CORPSE_DUST = new AbandonedZoneItem("corpse_dust", new FabricItemSettings());
+	public static final Item CYAN_SAPPHIRE = new AbandonedZoneItem("cyan_sapphire", new FabricItemSettings());
+	public static final Item CYAN_SAPPHIRE_PICK = new AbandonedZoneItem("cyan_sapphire_pick", new FabricItemSettings());
 	public static final Item DIAMOND_DUST = new AbandonedZoneItem("diamond_dust", new FabricItemSettings());
 	public static final Item DULL_ORE = new AbandonedZoneItem("dull_ore", new FabricItemSettings());
 	public static final Item EMERALD_DUST = new AbandonedZoneItem("emerald_dust", new FabricItemSettings());
@@ -50,6 +55,8 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final Item GEMSTONE_BLEND = new AbandonedZoneItem("gemstone_blend", new FabricItemSettings());
 	public static final Item GLASS_DUST = new AbandonedZoneItem("glass_dust", new FabricItemSettings());
 	public static final Item GRASS_DUST = new AbandonedZoneItem("grass_dust", new FabricItemSettings());
+	public static final Item GREEN_SAPPHIRE = new AbandonedZoneItem("green_sapphire", new FabricItemSettings());
+	public static final Item GREEN_SAPPHIRE_PICK = new AbandonedZoneItem("green_sapphire_pick", new FabricItemSettings());
 	public static final Item HAMMER_HANDLE = new AbandonedZoneItem("hammer_handle", new FabricItemSettings());
 	public static final Item HAMMER_HEAD = new AbandonedZoneItem("hammer_head", new FabricItemSettings());
 	public static final Item INFERNAL_DUST = new AbandonedZoneItem("infernal_dust", new FabricItemSettings());
@@ -60,21 +67,33 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final Item MYSTIC_DUST = new AbandonedZoneItem("mystic_dust", new FabricItemSettings());
 	public static final Item NETHERITE_DUST = new AbandonedZoneItem("netherite_dust", new FabricItemSettings());
 	public static final Item NUTRIENT_POWDER = new AbandonedZoneItem("nutrient_powder", new FabricItemSettings());
+	public static final Item PINK_SAPPHIRE = new AbandonedZoneItem("pink_sapphire", new FabricItemSettings());
+	public static final Item PINK_SAPPHIRE_PICK = new AbandonedZoneItem("pink_sapphire_pick", new FabricItemSettings());
 	public static final Item POWDERED_EGG = new AbandonedZoneItem("powdered_egg", new FabricItemSettings());
 	public static final Item POWDERED_MILK	 = new AbandonedZoneItem("powdered_milk", new FabricItemSettings());
+	public static final Item PURPLE_SAPPHIRE = new AbandonedZoneItem("purple_sapphire", new FabricItemSettings());
+	public static final Item PURPLE_SAPPHIRE_PICK = new AbandonedZoneItem("purple_sapphire_pick", new FabricItemSettings());
 	public static final Item QUARTZ_DUST = new AbandonedZoneItem("quartz_dust", new FabricItemSettings());
 	public static final Item RARE_DUST = new AbandonedZoneItem("rare_dust", new FabricItemSettings());
+	public static final Item RED_SAPPHIRE = new AbandonedZoneItem("red_sapphire", new FabricItemSettings());
+	public static final Item RED_SAPPHIRE_PICK = new AbandonedZoneItem("red_sapphire_pick", new FabricItemSettings());
 	public static final Item RESONATING_DUST = new AbandonedZoneItem("resonating_dust", new FabricItemSettings());
 	public static final Item ROYAL_HEART = new AbandonedZoneItem("royal_heart", new FabricItemSettings());
+	public static final Item SAPPHIRE_DUST = new AbandonedZoneItem("sapphire_dust", new FabricItemSettings());
+	public static final Item SCRAP_PICK = new AbandonedZoneItem("scrap_pick", new FabricItemSettings());
 	public static final Item SCULK_DUST = new AbandonedZoneItem("sculk_dust", new FabricItemSettings());
 	public static final Item SOIL_DUST = new AbandonedZoneItem("soil_dust", new FabricItemSettings());
 	public static final Item SPECTRAL_DUST = new AbandonedZoneItem("spectral_dust", new FabricItemSettings());
 	public static final Item SPIRIT_NEWBORN = new AbandonedZoneItem("spirit_newborn", new FabricItemSettings());
 	public static final Item STAR_HAMMER = new AbandonedZoneItem("star_hammer", new FabricItemSettings());
+	public static final Item STARUDST = new AbandonedZoneItem("stardust", new FabricItemSettings());
 	public static final Item STEEL_BONE = new AbandonedZoneItem("steel_bone", new FabricItemSettings());
+	public static final Item THE_ABANDONED_TOME = new AbandonedZoneItem("the_abandoned_tome", new FabricItemSettings());
 	public static final Item WAXY_DUST = new AbandonedZoneItem("waxy_dust", new FabricItemSettings());
 	public static final Item WISHING_PENDANT = new AbandonedZoneItem("wishing_pendant", new FabricItemSettings());
 	public static final Item WOOD_DUST = new AbandonedZoneItem("wood_dust", new FabricItemSettings());
+	public static final Item YELLOW_SAPPHIRE = new AbandonedZoneItem("yellow_sapphire", new FabricItemSettings());
+	public static final Item YELLOW_SAPPHIRE_PICK = new AbandonedZoneItem("yellow_sapphire_pick", new FabricItemSettings());
 	//endregion
 
 	//region BLOCKS
@@ -83,12 +102,29 @@ public class TheAbandonedZoneMod implements ModInitializer {
 
 	// item group, this gives mod items their own creative inventory page
 	private static final ItemGroup ALL_ITEMS = FabricItemGroup.builder()
-			.icon(() -> new ItemStack(COAL_DUST))
+			.icon(() -> new ItemStack(THE_ABANDONED_TOME))
 			.displayName(Text.translatable("itemGroup.the_abandoned_zone.all_items"))
 			.entries((context, entries) -> {
+				entries.add(THE_ABANDONED_TOME);
 				entries.add(DULL_ORE);
 				entries.add(BRILLIANT_INGOT);
 				entries.add(BRILLIANT_NUGGET);
+				entries.add(BLUE_SAPPHIRE);
+				entries.add(RED_SAPPHIRE);
+				entries.add(YELLOW_SAPPHIRE);
+				entries.add(GREEN_SAPPHIRE);
+				entries.add(CYAN_SAPPHIRE);
+				entries.add(PURPLE_SAPPHIRE);
+				entries.add(PINK_SAPPHIRE);
+				entries.add(SCRAP_PICK);
+				entries.add(BRILLIANT_PICK);
+				entries.add(BLUE_SAPPHIRE_PICK);
+				entries.add(RED_SAPPHIRE_PICK);
+				entries.add(YELLOW_SAPPHIRE_PICK);
+				entries.add(GREEN_SAPPHIRE_PICK);
+				entries.add(CYAN_SAPPHIRE_PICK);
+				entries.add(PURPLE_SAPPHIRE_PICK);
+				entries.add(PINK_SAPPHIRE_PICK);
 				entries.add(HAMMER_HEAD);
 				entries.add(HAMMER_HANDLE);
 				entries.add(STAR_HAMMER);
@@ -129,9 +165,8 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(RESONATING_DUST);
 				entries.add(RARE_DUST);
 				entries.add(GEMSTONE_BLEND);
-
-				// example of adding a block item using AbandonedZoneBlock wrapper class
-				entries.add(CRYSTAL_STONE.item);
+				entries.add(SAPPHIRE_DUST);
+				entries.add(STARUDST);
 			})
 			.build();
 
