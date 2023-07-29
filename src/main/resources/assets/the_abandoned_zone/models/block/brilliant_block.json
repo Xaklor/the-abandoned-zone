@@ -1,0 +1,9 @@
+    {
+      "parent": "block/cube_bottom_top",
+      "textures": {
+	"bottom": "the_abandoned_zone:block/brilliant_block_bottom",
+	"side": "the_abandoned_zone:block/brilliant_block_side",
+	"top": "the_abandoned_zone:block/brilliant_block_top"
+      }
+    }
+

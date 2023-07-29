@@ -1,0 +1,8 @@
+    {
+      "parent": "minecraft:block/cube_column",
+      "textures": {
+	"end": "the_abandoned_zone:block/sapphire_ore_top",
+        "side": "the_abandoned_zone:block/sapphire_ore"
+      }
+    }
+

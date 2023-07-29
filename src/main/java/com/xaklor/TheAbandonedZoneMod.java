@@ -97,7 +97,35 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	//endregion
 
 	//region BLOCKS
-	public static final AbandonedZoneBlock CRYSTAL_STONE = new AbandonedZoneBlock("crystal_stone", FabricBlockSettings.create().nonOpaque().solidBlock(Blocks::never), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock ALCHEMIC_BRICKS = new AbandonedZoneBlock("alchemic_bricks", FabricBlockSettings.create(), BlockType.NORMAL);
+	public static final AbandonedZoneBlock BLACK_CRYSTAL_STONE = new AbandonedZoneBlock("black_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock BLUE_CRYSTAL_STONE = new AbandonedZoneBlock("blue_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock BRILLIANT_BLOCK = new AbandonedZoneBlock("brilliant_block", FabricBlockSettings.create(), BlockType.NORMAL);
+	public static final AbandonedZoneBlock BRILLIANT_ORE = new AbandonedZoneBlock("brilliant_ore", FabricBlockSettings.create(), BlockType.NORMAL);
+	public static final AbandonedZoneBlock BROWN_CRYSTAL_STONE = new AbandonedZoneBlock("brown_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock CRYSTAL_STONE = new AbandonedZoneBlock("crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock CYAN_CRYSTAL_STONE = new AbandonedZoneBlock("cyan_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock DULL_ORE_BLOCK = new AbandonedZoneBlock("dull_ore_block", FabricBlockSettings.create(), BlockType.NORMAL);
+	public static final AbandonedZoneBlock GNEISS = new AbandonedZoneBlock("gneiss", FabricBlockSettings.create(), BlockType.NORMAL);
+	public static final AbandonedZoneBlock GNEISS_BRILLIANT_ORE = new AbandonedZoneBlock("gneiss_brilliant_ore", FabricBlockSettings.create(), BlockType.NORMAL);
+	public static final AbandonedZoneBlock GRAY_CRYSTAL_STONE = new AbandonedZoneBlock("gray_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock GREEN_CRYSTAL_STONE = new AbandonedZoneBlock("green_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock INDUSTRIAL_SCRAP = new AbandonedZoneBlock("industrial_scrap", FabricBlockSettings.create(), BlockType.NORMAL);
+	public static final AbandonedZoneBlock LIGHT_BLUE_CRYSTAL_STONE = new AbandonedZoneBlock("light_blue_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock LIGHT_GRAY_CRYSTAL_STONE = new AbandonedZoneBlock("light_gray_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock LIME_CRYSTAL_STONE = new AbandonedZoneBlock("lime_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock MAGENTA_CRYSTAL_STONE = new AbandonedZoneBlock("magenta_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock METAL_MATRIX = new AbandonedZoneBlock("metal_matrix", FabricBlockSettings.create(), BlockType.NORMAL);
+	public static final AbandonedZoneBlock METEORITE_CHUNK = new AbandonedZoneBlock("meteorite_chunk", FabricBlockSettings.create(), BlockType.NORMAL);
+	public static final AbandonedZoneBlock MIGHT_BLOCK = new AbandonedZoneBlock("might_block", FabricBlockSettings.create(), BlockType.NORMAL);
+	public static final AbandonedZoneBlock ORANGE_CRYSTAL_STONE = new AbandonedZoneBlock("orange_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock PURPLE_CRYSTAL_STONE = new AbandonedZoneBlock("purple_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock RED_CRYSTAL_STONE = new AbandonedZoneBlock("red_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock SAPPHIRE_ORE = new AbandonedZoneBlock("sapphire_ore", FabricBlockSettings.create(), BlockType.NORMAL);
+	public static final AbandonedZoneBlock VOLCANIC_ASH = new AbandonedZoneBlock("volcanic_ash", FabricBlockSettings.create(), BlockType.NORMAL);
+	public static final AbandonedZoneBlock WHITE_CRYSTAL_STONE = new AbandonedZoneBlock("white_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock YELLOW_CRYSTAL_STONE = new AbandonedZoneBlock("yellow_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+
 	//endregion
 
 	// item group, this gives mod items their own creative inventory page
@@ -106,9 +134,36 @@ public class TheAbandonedZoneMod implements ModInitializer {
 			.displayName(Text.translatable("itemGroup.the_abandoned_zone.all_items"))
 			.entries((context, entries) -> {
 				entries.add(THE_ABANDONED_TOME);
+				entries.add(GNEISS.item);
+				entries.add(ALCHEMIC_BRICKS.item);
+				entries.add(VOLCANIC_ASH.item);
+				entries.add(CRYSTAL_STONE.item);
+				entries.add(WHITE_CRYSTAL_STONE.item);
+				entries.add(LIGHT_GRAY_CRYSTAL_STONE.item);
+				entries.add(GRAY_CRYSTAL_STONE.item);
+				entries.add(BLACK_CRYSTAL_STONE.item);
+				entries.add(BROWN_CRYSTAL_STONE.item);
+				entries.add(RED_CRYSTAL_STONE.item);
+				entries.add(ORANGE_CRYSTAL_STONE.item);
+				entries.add(YELLOW_CRYSTAL_STONE.item);
+				entries.add(LIME_CRYSTAL_STONE.item);
+				entries.add(GREEN_CRYSTAL_STONE.item);
+				entries.add(CYAN_CRYSTAL_STONE.item);
+				entries.add(LIGHT_BLUE_CRYSTAL_STONE.item);
+				entries.add(BLUE_CRYSTAL_STONE.item);
+				entries.add(PURPLE_CRYSTAL_STONE.item);
+				entries.add(MAGENTA_CRYSTAL_STONE.item);
+				entries.add(METAL_MATRIX.item);
+				entries.add(MIGHT_BLOCK.item);
+				entries.add(INDUSTRIAL_SCRAP.item);
+				entries.add(BRILLIANT_ORE.item);
+				entries.add(GNEISS_BRILLIANT_ORE.item);
 				entries.add(DULL_ORE);
 				entries.add(BRILLIANT_INGOT);
 				entries.add(BRILLIANT_NUGGET);
+				entries.add(BRILLIANT_BLOCK.item);
+				entries.add(DULL_ORE_BLOCK.item);
+				entries.add(SAPPHIRE_ORE.item);
 				entries.add(BLUE_SAPPHIRE);
 				entries.add(RED_SAPPHIRE);
 				entries.add(YELLOW_SAPPHIRE);
@@ -116,6 +171,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(CYAN_SAPPHIRE);
 				entries.add(PURPLE_SAPPHIRE);
 				entries.add(PINK_SAPPHIRE);
+				entries.add(METEORITE_CHUNK.item);
 				entries.add(SCRAP_PICK);
 				entries.add(BRILLIANT_PICK);
 				entries.add(BLUE_SAPPHIRE_PICK);
