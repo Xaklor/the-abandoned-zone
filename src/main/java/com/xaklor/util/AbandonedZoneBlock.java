@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.block.TransparentBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -27,7 +28,8 @@ public class AbandonedZoneBlock {
 
     public enum BlockType {
         NORMAL,
-        TRANSPARENT
+        TRANSPARENT,
+        PILLAR
     }
 
     /**
@@ -42,6 +44,7 @@ public class AbandonedZoneBlock {
         this.type = blockType;
         switch (blockType) {
             case TRANSPARENT -> this.block = new TransparentBlock(settings);
+            case PILLAR -> this.block = new PillarBlock(settings);
             default -> this.block = new Block(settings);
         }
         this.hasItem = hasItem;

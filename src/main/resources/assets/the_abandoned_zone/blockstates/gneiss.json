@@ -1,6 +1,16 @@
-    {
-      "variants": {
-        "": { "model": "the_abandoned_zone:block/gneiss" }
-      }
+{
+  "variants": {
+    "axis=x": {
+      "model": "the_abandoned_zone:block/gneiss",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "the_abandoned_zone:block/gneiss"
+    },
+    "axis=z": {
+      "model": "the_abandoned_zone:block/gneiss",
+      "x": 90
     }
-
+  }
+}

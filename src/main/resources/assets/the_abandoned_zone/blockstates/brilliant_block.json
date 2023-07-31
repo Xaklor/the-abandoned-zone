@@ -1,6 +1,10 @@
     {
       "variants": {
-        "": { "model": "the_abandoned_zone:block/brilliant_block" }
+        "facing=north": { "model": "the_abandoned_zone:block/brilliant_block", "x":  90 },
+        "facing=east":  { "model": "the_abandoned_zone:block/brilliant_block", "x":  90, "y": 90 },
+        "facing=south": { "model": "the_abandoned_zone:block/brilliant_block", "x": 270 },
+        "facing=west":  { "model": "the_abandoned_zone:block/brilliant_block", "x": 270, "y": 90 },
+        "facing=up":    { "model": "the_abandoned_zone:block/brilliant_block" },
+        "facing=down":  { "model": "the_abandoned_zone:block/brilliant_block", "x": 180 }
       }
     }
-

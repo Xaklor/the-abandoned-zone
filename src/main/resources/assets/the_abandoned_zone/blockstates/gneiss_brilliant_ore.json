@@ -1,6 +1,16 @@
-    {
-      "variants": {
-        "": { "model": "the_abandoned_zone:block/gneiss_brilliant_ore" }
-      }
+{
+  "variants": {
+    "axis=x": {
+      "model": "the_abandoned_zone:block/gneiss_brilliant_ore",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "the_abandoned_zone:block/gneiss_brilliant_ore"
+    },
+    "axis=z": {
+      "model": "the_abandoned_zone:block/gneiss_brilliant_ore",
+      "x": 90
     }
-
+  }
+}
