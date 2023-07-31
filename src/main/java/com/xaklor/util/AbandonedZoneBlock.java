@@ -3,21 +3,18 @@ package com.xaklor.util;
 import com.xaklor.TheAbandonedZoneMod;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.PillarBlock;
-import net.minecraft.block.TransparentBlock;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
+import net.minecraft.block.*;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.state.StateManager;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Direction;
 
 /**
  * Class for simplifying block initialization and registration
  */
-public class AbandonedZoneBlock {
+public class AbandonedZoneBlock implements ItemConvertible {
 
     public final Identifier id;
     public final BlockType type;
@@ -29,7 +26,8 @@ public class AbandonedZoneBlock {
     public enum BlockType {
         NORMAL,
         TRANSPARENT,
-        PILLAR
+        PILLAR,
+        FACING
     }
 
     /**
@@ -45,6 +43,7 @@ public class AbandonedZoneBlock {
         switch (blockType) {
             case TRANSPARENT -> this.block = new TransparentBlock(settings);
             case PILLAR -> this.block = new PillarBlock(settings);
+            case FACING -> this.block = new AbandonedZoneFacingBlock(settings);
             default -> this.block = new Block(settings);
         }
         this.hasItem = hasItem;
@@ -70,6 +69,28 @@ public class AbandonedZoneBlock {
             Registry.register(Registries.ITEM, this.id, this.item);
         if (this.burnTime > 0)
             FuelRegistry.INSTANCE.add(this.item, this.burnTime);
+    }
+
+    @Override
+    public Item asItem() {
+        return this.item;
+    }
+
+    private static class AbandonedZoneFacingBlock extends FacingBlock {
+
+        public AbandonedZoneFacingBlock(Settings settings) {
+            super(settings);
+            this.setDefaultState(getDefaultState().with(FACING, Direction.DOWN));
+        }
+
+        @Override
+        protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+            builder.add(FACING);
+        }
+
+        public BlockState getPlacementState(ItemPlacementContext ctx) {
+            return this.getDefaultState().with(FACING, ctx.getSide());
+        }
     }
 
 }

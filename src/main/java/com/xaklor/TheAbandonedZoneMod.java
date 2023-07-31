@@ -1,13 +1,17 @@
 package com.xaklor;
 
-import com.xaklor.util.AbandonedZoneBlock.BlockType;
-import com.xaklor.util.TheAbandonedZoneTool.ToolType;
 import com.xaklor.util.*;
+import com.xaklor.util.AbandonedZoneBlock.BlockType;
+import com.xaklor.util.AbandonedZoneTool.ToolType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.item.*;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.Enchantments;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
@@ -16,7 +20,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TheAbandonedZoneMod implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
@@ -26,6 +32,8 @@ public class TheAbandonedZoneMod implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static final List<Item> ITEMS = new ArrayList<>();
 	public static final List<AbandonedZoneBlock> BLOCKS = new ArrayList<>();
+	public static final Map<Item, List<Enchantment>> INCOMPATIBLE_ENCHANT_RULES = new HashMap<>();
+	public static final Map<Item, List<Enchantment>> COMPATIBLE_ENCHANT_RULES = new HashMap<>();
 
 	//region ITEMS
 	public static final Item AMETHYST_DUST = new AbandonedZoneItem("amethyst_dust", new FabricItemSettings());
@@ -86,7 +94,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final AbandonedZoneBlock ALCHEMIC_BRICKS = new AbandonedZoneBlock("alchemic_bricks", FabricBlockSettings.create(), BlockType.NORMAL);
 	public static final AbandonedZoneBlock BLACK_CRYSTAL_STONE = new AbandonedZoneBlock("black_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
 	public static final AbandonedZoneBlock BLUE_CRYSTAL_STONE = new AbandonedZoneBlock("blue_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
-	public static final BrilliantBlock BRILLIANT_BLOCK = new BrilliantBlock(FabricBlockSettings.create());
+	public static final AbandonedZoneBlock BRILLIANT_BLOCK = new AbandonedZoneBlock("brilliant_block", FabricBlockSettings.create(), BlockType.FACING);
 	public static final AbandonedZoneBlock BRILLIANT_ORE = new AbandonedZoneBlock("brilliant_ore", FabricBlockSettings.create(), BlockType.NORMAL);
 	public static final AbandonedZoneBlock BROWN_CRYSTAL_STONE = new AbandonedZoneBlock("brown_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
 	public static final AbandonedZoneBlock CRYSTAL_STONE = new AbandonedZoneBlock("crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
@@ -115,16 +123,16 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	//endregion
 
 	//region TOOLS
-	public static final TheAbandonedZoneTool BLUE_SAPPHIRE_PICK = new TheAbandonedZoneTool(new BlueSapphireMaterial(), 0, -2.8f, new Item.Settings(), "blue_sapphire_pick", ToolType.PICKAXE);
-	public static final TheAbandonedZoneTool BRILLIANT_PICK = new TheAbandonedZoneTool(new BrilliantMaterial(), 0, -2.8f, new Item.Settings(), "brilliant_pick", ToolType.PICKAXE);
-	public static final TheAbandonedZoneTool CYAN_SAPPHIRE_PICK = new TheAbandonedZoneTool(new CyanSapphireMaterial(), 0, -2.8f, new Item.Settings(), "cyan_sapphire_pick", ToolType.PICKAXE);
-	public static final TheAbandonedZoneTool GREEN_SAPPHIRE_PICK = new TheAbandonedZoneTool(new GreenSapphireMaterial(), 0, -2.8f, new Item.Settings(), "green_sapphire_pick", ToolType.PICKAXE);
-	public static final TheAbandonedZoneTool PINK_SAPPHIRE_PICK = new TheAbandonedZoneTool(new PinkSapphireMaterial(), 0, -2.8f, new Item.Settings(), "pink_sapphire_pick", ToolType.PICKAXE);
-	public static final TheAbandonedZoneTool PURPLE_SAPPHIRE_PICK = new TheAbandonedZoneTool(new PurpleSapphireMaterial(), 0, -2.8f, new Item.Settings(), "purple_sapphire_pick", ToolType.PICKAXE);
-	public static final TheAbandonedZoneTool RED_SAPPHIRE_PICK = new TheAbandonedZoneTool(new RedSapphireMaterial(), 0, -2.8f, new Item.Settings(), "red_sapphire_pick", ToolType.PICKAXE);
-	public static final TheAbandonedZoneTool SCRAP_PICK = new TheAbandonedZoneTool(new ScrapMaterial(), 0, -2.8f, new Item.Settings(), "scrap_pick", ToolType.PICKAXE);
-	public static final TheAbandonedZoneTool STAR_HAMMER = new TheAbandonedZoneTool(new MeteoriteMaterial(), 0, -2.4f, new Item.Settings(), "star_hammer", ToolType.SWORD);
-	public static final TheAbandonedZoneTool YELLOW_SAPPHIRE_PICK = new TheAbandonedZoneTool(new YellowSapphireMaterial(), 0, -2.8f, new Item.Settings(), "yellow_sapphire_pick", ToolType.PICKAXE);
+	public static final AbandonedZoneTool BLUE_SAPPHIRE_PICK = new AbandonedZoneTool(AbandonedZoneMaterials.BLUE_SAPPHIRE, 0, -2.8f, new Item.Settings(), "blue_sapphire_pick", ToolType.PICKAXE);
+	public static final AbandonedZoneTool BRILLIANT_PICK = new AbandonedZoneTool(AbandonedZoneMaterials.BRILLIANT_MATERIAL, 0, -2.8f, new Item.Settings(), "brilliant_pick", ToolType.PICKAXE);
+	public static final AbandonedZoneTool CYAN_SAPPHIRE_PICK = new AbandonedZoneTool(AbandonedZoneMaterials.CYAN_SAPPHIRE, 0, -2.8f, new Item.Settings(), "cyan_sapphire_pick", ToolType.PICKAXE);
+	public static final AbandonedZoneTool GREEN_SAPPHIRE_PICK = new AbandonedZoneTool(AbandonedZoneMaterials.GREEN_SAPPHIRE, 0, -2.8f, new Item.Settings(), "green_sapphire_pick", ToolType.PICKAXE);
+	public static final AbandonedZoneTool PINK_SAPPHIRE_PICK = new AbandonedZoneTool(AbandonedZoneMaterials.PINK_SAPPHIRE, 0, -2.8f, new Item.Settings(), "pink_sapphire_pick", ToolType.PICKAXE);
+	public static final AbandonedZoneTool PURPLE_SAPPHIRE_PICK = new AbandonedZoneTool(AbandonedZoneMaterials.PURPLE_SAPPHIRE, 0, -2.8f, new Item.Settings(), "purple_sapphire_pick", ToolType.PICKAXE);
+	public static final AbandonedZoneTool RED_SAPPHIRE_PICK = new AbandonedZoneTool(AbandonedZoneMaterials.RED_SAPPHIRE, 0, -2.8f, new Item.Settings(), "red_sapphire_pick", ToolType.PICKAXE);
+	public static final AbandonedZoneTool SCRAP_PICK = new AbandonedZoneTool(AbandonedZoneMaterials.SCRAP_MATERIAL, 0, -2.8f, new Item.Settings(), "scrap_pick", ToolType.PICKAXE);
+	public static final AbandonedZoneTool STAR_HAMMER = new AbandonedZoneTool(AbandonedZoneMaterials.METEORITE_MATERIAL, 0, -2.4f, new Item.Settings(), "star_hammer", ToolType.SWORD, Enchantments.FIRE_ASPECT);
+	public static final AbandonedZoneTool YELLOW_SAPPHIRE_PICK = new AbandonedZoneTool(AbandonedZoneMaterials.YELLOW_SAPPHIRE, 0, -2.8f, new Item.Settings(), "yellow_sapphire_pick", ToolType.PICKAXE);
 	//endregion
 
 	// item group, this gives mod items their own creative inventory page
@@ -133,36 +141,36 @@ public class TheAbandonedZoneMod implements ModInitializer {
 			.displayName(Text.translatable("itemGroup.the_abandoned_zone.all_items"))
 			.entries((context, entries) -> {
 				entries.add(THE_ABANDONED_TOME);
-				entries.add(GNEISS.item);
-				entries.add(ALCHEMIC_BRICKS.item);
-				entries.add(VOLCANIC_ASH.item);
-				entries.add(CRYSTAL_STONE.item);
-				entries.add(WHITE_CRYSTAL_STONE.item);
-				entries.add(LIGHT_GRAY_CRYSTAL_STONE.item);
-				entries.add(GRAY_CRYSTAL_STONE.item);
-				entries.add(BLACK_CRYSTAL_STONE.item);
-				entries.add(BROWN_CRYSTAL_STONE.item);
-				entries.add(RED_CRYSTAL_STONE.item);
-				entries.add(ORANGE_CRYSTAL_STONE.item);
-				entries.add(YELLOW_CRYSTAL_STONE.item);
-				entries.add(LIME_CRYSTAL_STONE.item);
-				entries.add(GREEN_CRYSTAL_STONE.item);
-				entries.add(CYAN_CRYSTAL_STONE.item);
-				entries.add(LIGHT_BLUE_CRYSTAL_STONE.item);
-				entries.add(BLUE_CRYSTAL_STONE.item);
-				entries.add(PURPLE_CRYSTAL_STONE.item);
-				entries.add(MAGENTA_CRYSTAL_STONE.item);
-				entries.add(METAL_MATRIX.item);
-				entries.add(MIGHT_BLOCK.item);
-				entries.add(INDUSTRIAL_SCRAP.item);
-				entries.add(BRILLIANT_ORE.item);
-				entries.add(GNEISS_BRILLIANT_ORE.item);
+				entries.add(GNEISS);
+				entries.add(ALCHEMIC_BRICKS);
+				entries.add(VOLCANIC_ASH);
+				entries.add(CRYSTAL_STONE);
+				entries.add(WHITE_CRYSTAL_STONE);
+				entries.add(LIGHT_GRAY_CRYSTAL_STONE);
+				entries.add(GRAY_CRYSTAL_STONE);
+				entries.add(BLACK_CRYSTAL_STONE);
+				entries.add(BROWN_CRYSTAL_STONE);
+				entries.add(RED_CRYSTAL_STONE);
+				entries.add(ORANGE_CRYSTAL_STONE);
+				entries.add(YELLOW_CRYSTAL_STONE);
+				entries.add(LIME_CRYSTAL_STONE);
+				entries.add(GREEN_CRYSTAL_STONE);
+				entries.add(CYAN_CRYSTAL_STONE);
+				entries.add(LIGHT_BLUE_CRYSTAL_STONE);
+				entries.add(BLUE_CRYSTAL_STONE);
+				entries.add(PURPLE_CRYSTAL_STONE);
+				entries.add(MAGENTA_CRYSTAL_STONE);
+				entries.add(METAL_MATRIX);
+				entries.add(MIGHT_BLOCK);
+				entries.add(INDUSTRIAL_SCRAP);
+				entries.add(BRILLIANT_ORE);
+				entries.add(GNEISS_BRILLIANT_ORE);
 				entries.add(DULL_ORE);
 				entries.add(BRILLIANT_INGOT);
 				entries.add(BRILLIANT_NUGGET);
 				entries.add(BRILLIANT_BLOCK);
-				entries.add(DULL_ORE_BLOCK.item);
-				entries.add(SAPPHIRE_ORE.item);
+				entries.add(DULL_ORE_BLOCK);
+				entries.add(SAPPHIRE_ORE);
 				entries.add(BLUE_SAPPHIRE);
 				entries.add(RED_SAPPHIRE);
 				entries.add(YELLOW_SAPPHIRE);
@@ -170,19 +178,19 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(CYAN_SAPPHIRE);
 				entries.add(PURPLE_SAPPHIRE);
 				entries.add(PINK_SAPPHIRE);
-				entries.add(METEORITE_CHUNK.item);
-				entries.add(SCRAP_PICK.tool);
-				entries.add(BRILLIANT_PICK.tool);
-				entries.add(BLUE_SAPPHIRE_PICK.tool);
-				entries.add(RED_SAPPHIRE_PICK.tool);
-				entries.add(YELLOW_SAPPHIRE_PICK.tool);
-				entries.add(GREEN_SAPPHIRE_PICK.tool);
-				entries.add(CYAN_SAPPHIRE_PICK.tool);
-				entries.add(PURPLE_SAPPHIRE_PICK.tool);
-				entries.add(PINK_SAPPHIRE_PICK.tool);
+				entries.add(METEORITE_CHUNK);
+				entries.add(SCRAP_PICK);
+				entries.add(BRILLIANT_PICK);
+				entries.add(BLUE_SAPPHIRE_PICK);
+				entries.add(RED_SAPPHIRE_PICK);
+				entries.add(YELLOW_SAPPHIRE_PICK);
+				entries.add(GREEN_SAPPHIRE_PICK);
+				entries.add(CYAN_SAPPHIRE_PICK);
+				entries.add(PURPLE_SAPPHIRE_PICK);
+				entries.add(PINK_SAPPHIRE_PICK);
 				entries.add(HAMMER_HEAD);
 				entries.add(HAMMER_HANDLE);
-				entries.add(STAR_HAMMER.tool);
+				entries.add(STAR_HAMMER);
 				entries.add(FUEL_CANISTER);
 				entries.add(INSTANT_CAKE);
 				entries.add(NUTRIENT_POWDER);
