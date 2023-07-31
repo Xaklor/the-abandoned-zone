@@ -35,7 +35,7 @@ public class AbandonedZoneBlock {
     /**
      * @param id string id, registered in the form "the_abandoned_zone:id"
      * @param settings block settings
-     * @param blockType either TRANSPARENT or NORMAL, transparent allows for block transparency
+     * @param blockType either TRANSPARENT, PILLAR, or NORMAL transparent allows for block transparency, pillar behaves like pillars
      * @param hasItem if the block should be obtainable or not
      * @param burnTime burn time of the block item in a furnace, if 0 does not add to FuelRegistry
      */

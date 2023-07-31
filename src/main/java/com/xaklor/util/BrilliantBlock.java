@@ -1,4 +1,4 @@
-package com.xaklor;
+package com.xaklor.util;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
