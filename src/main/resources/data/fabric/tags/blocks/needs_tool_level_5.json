@@ -1,0 +1,9 @@
+    {
+      "replace": false,
+      "values": [
+        "the_abandoned_zone:gneiss",
+        "the_abandoned_zone:gneiss_brilliant_ore",
+        "the_abandoned_zone:sapphire_ore"
+      ]
+    }
+

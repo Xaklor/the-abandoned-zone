@@ -6,7 +6,9 @@ import com.xaklor.util.AbandonedZoneTool.ToolType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.mininglevel.v1.MiningLevelManager;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
@@ -14,6 +16,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -91,34 +94,34 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	//endregion
 
 	//region BLOCKS
-	public static final AbandonedZoneBlock ALCHEMIC_BRICKS = new AbandonedZoneBlock("alchemic_bricks", FabricBlockSettings.create(), BlockType.NORMAL);
-	public static final AbandonedZoneBlock BLACK_CRYSTAL_STONE = new AbandonedZoneBlock("black_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
-	public static final AbandonedZoneBlock BLUE_CRYSTAL_STONE = new AbandonedZoneBlock("blue_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
-	public static final AbandonedZoneBlock BRILLIANT_BLOCK = new AbandonedZoneBlock("brilliant_block", FabricBlockSettings.create(), BlockType.FACING);
-	public static final AbandonedZoneBlock BRILLIANT_ORE = new AbandonedZoneBlock("brilliant_ore", FabricBlockSettings.create(), BlockType.NORMAL);
-	public static final AbandonedZoneBlock BROWN_CRYSTAL_STONE = new AbandonedZoneBlock("brown_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
-	public static final AbandonedZoneBlock CRYSTAL_STONE = new AbandonedZoneBlock("crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
-	public static final AbandonedZoneBlock CYAN_CRYSTAL_STONE = new AbandonedZoneBlock("cyan_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
-	public static final AbandonedZoneBlock DULL_ORE_BLOCK = new AbandonedZoneBlock("dull_ore_block", FabricBlockSettings.create(), BlockType.NORMAL);
-	public static final AbandonedZoneBlock GNEISS = new AbandonedZoneBlock("gneiss", FabricBlockSettings.create(), BlockType.PILLAR);
-	public static final AbandonedZoneBlock GNEISS_BRILLIANT_ORE = new AbandonedZoneBlock("gneiss_brilliant_ore", FabricBlockSettings.create(), BlockType.PILLAR);
-	public static final AbandonedZoneBlock GRAY_CRYSTAL_STONE = new AbandonedZoneBlock("gray_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
-	public static final AbandonedZoneBlock GREEN_CRYSTAL_STONE = new AbandonedZoneBlock("green_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
-	public static final AbandonedZoneBlock INDUSTRIAL_SCRAP = new AbandonedZoneBlock("industrial_scrap", FabricBlockSettings.create(), BlockType.NORMAL);
-	public static final AbandonedZoneBlock LIGHT_BLUE_CRYSTAL_STONE = new AbandonedZoneBlock("light_blue_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
-	public static final AbandonedZoneBlock LIGHT_GRAY_CRYSTAL_STONE = new AbandonedZoneBlock("light_gray_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
-	public static final AbandonedZoneBlock LIME_CRYSTAL_STONE = new AbandonedZoneBlock("lime_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
-	public static final AbandonedZoneBlock MAGENTA_CRYSTAL_STONE = new AbandonedZoneBlock("magenta_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
-	public static final AbandonedZoneBlock METAL_MATRIX = new AbandonedZoneBlock("metal_matrix", FabricBlockSettings.create(), BlockType.NORMAL);
-	public static final AbandonedZoneBlock METEORITE_CHUNK = new AbandonedZoneBlock("meteorite_chunk", FabricBlockSettings.create(), BlockType.NORMAL);
-	public static final AbandonedZoneBlock MIGHT_BLOCK = new AbandonedZoneBlock("might_block", FabricBlockSettings.create(), BlockType.NORMAL);
-	public static final AbandonedZoneBlock ORANGE_CRYSTAL_STONE = new AbandonedZoneBlock("orange_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
-	public static final AbandonedZoneBlock PURPLE_CRYSTAL_STONE = new AbandonedZoneBlock("purple_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
-	public static final AbandonedZoneBlock RED_CRYSTAL_STONE = new AbandonedZoneBlock("red_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
-	public static final AbandonedZoneBlock SAPPHIRE_ORE = new AbandonedZoneBlock("sapphire_ore", FabricBlockSettings.create(), BlockType.PILLAR);
-	public static final AbandonedZoneBlock VOLCANIC_ASH = new AbandonedZoneBlock("volcanic_ash", FabricBlockSettings.create(), BlockType.NORMAL);
-	public static final AbandonedZoneBlock WHITE_CRYSTAL_STONE = new AbandonedZoneBlock("white_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
-	public static final AbandonedZoneBlock YELLOW_CRYSTAL_STONE = new AbandonedZoneBlock("yellow_crystal_stone", FabricBlockSettings.create().nonOpaque(), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock ALCHEMIC_BRICKS = new AbandonedZoneBlock("alchemic_bricks", FabricBlockSettings.create().requiresTool().strength(3, 6).sounds(BlockSoundGroup.NETHER_BRICKS), BlockType.NORMAL);
+	public static final AbandonedZoneBlock BLACK_CRYSTAL_STONE = new AbandonedZoneBlock("black_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock BLUE_CRYSTAL_STONE = new AbandonedZoneBlock("blue_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock BRILLIANT_BLOCK = new AbandonedZoneBlock("brilliant_block", FabricBlockSettings.create().requiresTool().strength(3, 6).sounds(BlockSoundGroup.NETHERITE), BlockType.FACING);
+	public static final AbandonedZoneBlock BRILLIANT_ORE = new AbandonedZoneBlock("brilliant_ore", FabricBlockSettings.create().requiresTool().strength(3, 6).sounds(BlockSoundGroup.STONE), BlockType.NORMAL);
+	public static final AbandonedZoneBlock BROWN_CRYSTAL_STONE = new AbandonedZoneBlock("brown_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock CRYSTAL_STONE = new AbandonedZoneBlock("crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock CYAN_CRYSTAL_STONE = new AbandonedZoneBlock("cyan_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock DULL_ORE_BLOCK = new AbandonedZoneBlock("dull_ore_block", FabricBlockSettings.create().requiresTool().strength(3, 6).sounds(BlockSoundGroup.NETHERITE), BlockType.NORMAL);
+	public static final AbandonedZoneBlock GNEISS = new AbandonedZoneBlock("gneiss", FabricBlockSettings.create().requiresTool().strength(40, 6).sounds(BlockSoundGroup.DRIPSTONE_BLOCK), BlockType.PILLAR);
+	public static final AbandonedZoneBlock GNEISS_BRILLIANT_ORE = new AbandonedZoneBlock("gneiss_brilliant_ore", FabricBlockSettings.create().requiresTool().strength(50, 6).sounds(BlockSoundGroup.DRIPSTONE_BLOCK), BlockType.PILLAR);
+	public static final AbandonedZoneBlock GRAY_CRYSTAL_STONE = new AbandonedZoneBlock("gray_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock GREEN_CRYSTAL_STONE = new AbandonedZoneBlock("green_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock INDUSTRIAL_SCRAP = new AbandonedZoneBlock("industrial_scrap", FabricBlockSettings.create().requiresTool().strength(3, 6).sounds(BlockSoundGroup.COPPER), BlockType.NORMAL);
+	public static final AbandonedZoneBlock LIGHT_BLUE_CRYSTAL_STONE = new AbandonedZoneBlock("light_blue_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock LIGHT_GRAY_CRYSTAL_STONE = new AbandonedZoneBlock("light_gray_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock LIME_CRYSTAL_STONE = new AbandonedZoneBlock("lime_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock MAGENTA_CRYSTAL_STONE = new AbandonedZoneBlock("magenta_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock METAL_MATRIX = new AbandonedZoneBlock("metal_matrix", FabricBlockSettings.create().requiresTool().strength(20, 30).sounds(BlockSoundGroup.COPPER), BlockType.NORMAL);
+	public static final AbandonedZoneBlock METEORITE_CHUNK = new AbandonedZoneBlock("meteorite_chunk", FabricBlockSettings.create().requiresTool().strength(50, 1200).sounds(BlockSoundGroup.NETHERITE), BlockType.NORMAL);
+	public static final AbandonedZoneBlock MIGHT_BLOCK = new AbandonedZoneBlock("might_block", FabricBlockSettings.create().requiresTool().strength(30, 30).sounds(BlockSoundGroup.NETHERITE), BlockType.NORMAL);
+	public static final AbandonedZoneBlock ORANGE_CRYSTAL_STONE = new AbandonedZoneBlock("orange_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock PURPLE_CRYSTAL_STONE = new AbandonedZoneBlock("purple_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock RED_CRYSTAL_STONE = new AbandonedZoneBlock("red_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock SAPPHIRE_ORE = new AbandonedZoneBlock("sapphire_ore", FabricBlockSettings.create().requiresTool().strength(50, 6).sounds(BlockSoundGroup.DRIPSTONE_BLOCK), BlockType.PILLAR);
+	public static final AbandonedZoneBlock VOLCANIC_ASH = new AbandonedZoneBlock("volcanic_ash", FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.SAND), BlockType.NORMAL);
+	public static final AbandonedZoneBlock WHITE_CRYSTAL_STONE = new AbandonedZoneBlock("white_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
+	public static final AbandonedZoneBlock YELLOW_CRYSTAL_STONE = new AbandonedZoneBlock("yellow_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
 
 	//endregion
 
@@ -131,7 +134,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final AbandonedZoneTool PURPLE_SAPPHIRE_PICK = new AbandonedZoneTool(AbandonedZoneMaterials.PURPLE_SAPPHIRE, 0, -2.8f, new Item.Settings(), "purple_sapphire_pick", ToolType.PICKAXE);
 	public static final AbandonedZoneTool RED_SAPPHIRE_PICK = new AbandonedZoneTool(AbandonedZoneMaterials.RED_SAPPHIRE, 0, -2.8f, new Item.Settings(), "red_sapphire_pick", ToolType.PICKAXE);
 	public static final AbandonedZoneTool SCRAP_PICK = new AbandonedZoneTool(AbandonedZoneMaterials.SCRAP_MATERIAL, 0, -2.8f, new Item.Settings(), "scrap_pick", ToolType.PICKAXE);
-	public static final AbandonedZoneTool STAR_HAMMER = new AbandonedZoneTool(AbandonedZoneMaterials.METEORITE_MATERIAL, 0, -2.4f, new Item.Settings(), "star_hammer", ToolType.SWORD, Enchantments.FIRE_ASPECT);
+	public static final AbandonedZoneTool STAR_HAMMER = new AbandonedZoneTool(AbandonedZoneMaterials.METEORITE_MATERIAL, 0, -2.4f, new Item.Settings(), "star_hammer", ToolType.SWORD, Enchantments.FIRE_ASPECT, Enchantments.BANE_OF_ARTHROPODS, Enchantments.SMITE, Enchantments.SHARPNESS);
 	public static final AbandonedZoneTool YELLOW_SAPPHIRE_PICK = new AbandonedZoneTool(AbandonedZoneMaterials.YELLOW_SAPPHIRE, 0, -2.8f, new Item.Settings(), "yellow_sapphire_pick", ToolType.PICKAXE);
 	//endregion
 

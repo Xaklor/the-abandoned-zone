@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 public enum AbandonedZoneMaterials implements ToolMaterial {
     SCRAP_MATERIAL(4, 1000, 6.0f, 3.0f, 14, Ingredient.ofItems(TheAbandonedZoneMod.INDUSTRIAL_SCRAP)),
-    BRILLIANT_MATERIAL(4, 2031, 12.0f, 4.0f, 18, Ingredient.ofItems(TheAbandonedZoneMod.BRILLIANT_INGOT)),
+    BRILLIANT_MATERIAL(5, 2031, 12.0f, 4.0f, 18, Ingredient.ofItems(TheAbandonedZoneMod.BRILLIANT_INGOT)),
     BLUE_SAPPHIRE(6, 4096, 17.0f, 5.0f, 22, Ingredient.ofItems(TheAbandonedZoneMod.BLUE_SAPPHIRE)),
     RED_SAPPHIRE(BLUE_SAPPHIRE, Ingredient.ofItems(TheAbandonedZoneMod.RED_SAPPHIRE)),
     YELLOW_SAPPHIRE(BLUE_SAPPHIRE, Ingredient.ofItems(TheAbandonedZoneMod.YELLOW_SAPPHIRE)),

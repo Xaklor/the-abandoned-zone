@@ -1,0 +1,28 @@
+    {
+      "replace": false,
+      "values": [
+        "the_abandoned_zone:alchemic_bricks",
+        "the_abandoned_zone:black_crystal_stone",
+        "the_abandoned_zone:blue_crystal_stone",
+        "the_abandoned_zone:brilliant_block",
+        "the_abandoned_zone:brilliant_ore",
+        "the_abandoned_zone:brown_crystal_stone",
+        "the_abandoned_zone:crystal_stone",
+        "the_abandoned_zone:cyan_crystal_stone",
+        "the_abandoned_zone:dull_ore_block",
+        "the_abandoned_zone:gray_crystal_stone",
+        "the_abandoned_zone:green_crystal_stone",
+        "the_abandoned_zone:light_blue_crystal_stone",
+        "the_abandoned_zone:light_gray_crystal_stone",
+        "the_abandoned_zone:lime_crystal_stone",
+        "the_abandoned_zone:magenta_crystal_stone",
+        "the_abandoned_zone:metal_matrix",
+        "the_abandoned_zone:might_block",
+        "the_abandoned_zone:orange_crystal_stone",
+        "the_abandoned_zone:purple_crystal_stone",
+        "the_abandoned_zone:red_crystal_stone",
+        "the_abandoned_zone:white_crystal_stone",
+        "the_abandoned_zone:yellow_crystal_stone"
+      ]
+    }
+
