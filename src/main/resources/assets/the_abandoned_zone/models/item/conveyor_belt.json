@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "the_abandoned_zone:item/conveyor_belt"
+  }
+}

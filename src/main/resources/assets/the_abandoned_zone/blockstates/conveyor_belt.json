@@ -1,0 +1,9 @@
+    {
+      "variants": {
+        "facing=north": { "model": "the_abandoned_zone:block/conveyor_belt", "uvlock": true },
+        "facing=east":  { "model": "the_abandoned_zone:block/conveyor_belt_east",  "y":  90, "uvlock": true },
+        "facing=south": { "model": "the_abandoned_zone:block/conveyor_belt_south", "y": 180, "uvlock": true },
+        "facing=west":  { "model": "the_abandoned_zone:block/conveyor_belt_west",  "y": 270, "uvlock": true }
+      }
+    }
+

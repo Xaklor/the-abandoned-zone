@@ -100,6 +100,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final AbandonedZoneBlock BRILLIANT_BLOCK = new AbandonedZoneBlock("brilliant_block", FabricBlockSettings.create().requiresTool().strength(3, 6).sounds(BlockSoundGroup.NETHERITE), BlockType.FACING);
 	public static final AbandonedZoneBlock BRILLIANT_ORE = new AbandonedZoneBlock("brilliant_ore", FabricBlockSettings.create().requiresTool().strength(3, 6).sounds(BlockSoundGroup.STONE), BlockType.NORMAL);
 	public static final AbandonedZoneBlock BROWN_CRYSTAL_STONE = new AbandonedZoneBlock("brown_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
+	public static final ConveyorBelt CONVEYOR_BELT = new ConveyorBelt(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.METAL));
 	public static final AbandonedZoneBlock CRYSTAL_STONE = new AbandonedZoneBlock("crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
 	public static final AbandonedZoneBlock CYAN_CRYSTAL_STONE = new AbandonedZoneBlock("cyan_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
 	public static final AbandonedZoneBlock DULL_ORE_BLOCK = new AbandonedZoneBlock("dull_ore_block", FabricBlockSettings.create().requiresTool().strength(3, 6).sounds(BlockSoundGroup.NETHERITE), BlockType.NORMAL);
@@ -182,6 +183,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(PURPLE_SAPPHIRE);
 				entries.add(PINK_SAPPHIRE);
 				entries.add(METEORITE_CHUNK);
+				entries.add(CONVEYOR_BELT);
 				entries.add(SCRAP_PICK);
 				entries.add(BRILLIANT_PICK);
 				entries.add(BLUE_SAPPHIRE_PICK);
@@ -238,7 +240,6 @@ public class TheAbandonedZoneMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-
 		// item group
 		Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "all_items"), ALL_ITEMS);
 	}
