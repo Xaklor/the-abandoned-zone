@@ -4,7 +4,6 @@
         "bottom": "the_abandoned_zone:block/assembler_arms_bottom",
         "side": "the_abandoned_zone:block/assembler_arms_side",
         "top": "the_abandoned_zone:block/assembler_arms_top",
-        "tendrils": "block/sculk_sensor_tendril_inactive",
         "arms": "the_abandoned_zone:block/assembler_arms_arms",
         "particle": "the_abandoned_zone:block/assembler_arms_side"
     },
@@ -22,11 +21,11 @@
             }
         },
         {
-            "from": [4, 0, 8],
-            "to": [12, 8, 8],
+            "from": [2, 1, 8],
+            "to": [14, 10, 8],
             "faces": {
-                "north": {"uv": [4, 8, 12, 16], "texture": "#tendrils" },
-                "south": {"uv": [12, 8, 4, 16], "texture": "#tendrils" }
+                "north": {"uv": [2,  6, 14, 15], "texture": "#arms" },
+                "south": {"uv": [14, 8,  2, 15], "texture": "#arms" }
             }
         }
 

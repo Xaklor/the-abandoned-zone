@@ -1,6 +1,9 @@
     {
       "variants": {
-        "": { "model": "the_abandoned_zone:block/assembler_arms" }
+        "facing=north": { "model": "the_abandoned_zone:block/assembler_arms" },
+        "facing=east":  { "model": "the_abandoned_zone:block/assembler_arms",  "y":  90 },
+        "facing=south": { "model": "the_abandoned_zone:block/assembler_arms",  "y": 180 },
+        "facing=west":  { "model": "the_abandoned_zone:block/assembler_arms",  "y": 270 }
       }
     }
 
