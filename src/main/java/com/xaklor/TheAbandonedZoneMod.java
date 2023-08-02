@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.mininglevel.v1.MiningLevelManager;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
@@ -95,6 +96,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 
 	//region BLOCKS
 	public static final AbandonedZoneBlock ALCHEMIC_BRICKS = new AbandonedZoneBlock("alchemic_bricks", FabricBlockSettings.create().requiresTool().strength(3, 6).sounds(BlockSoundGroup.NETHER_BRICKS), BlockType.NORMAL);
+	public static final AssemblerArms ASSEMBLER_ARMS = new AssemblerArms(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.METAL));
 	public static final AbandonedZoneBlock BLACK_CRYSTAL_STONE = new AbandonedZoneBlock("black_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
 	public static final AbandonedZoneBlock BLUE_CRYSTAL_STONE = new AbandonedZoneBlock("blue_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
 	public static final AbandonedZoneBlock BRILLIANT_BLOCK = new AbandonedZoneBlock("brilliant_block", FabricBlockSettings.create().requiresTool().strength(3, 6).sounds(BlockSoundGroup.NETHERITE), BlockType.FACING);
@@ -184,6 +186,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(PINK_SAPPHIRE);
 				entries.add(METEORITE_CHUNK);
 				entries.add(CONVEYOR_BELT);
+				entries.add(ASSEMBLER_ARMS);
 				entries.add(SCRAP_PICK);
 				entries.add(BRILLIANT_PICK);
 				entries.add(BLUE_SAPPHIRE_PICK);
