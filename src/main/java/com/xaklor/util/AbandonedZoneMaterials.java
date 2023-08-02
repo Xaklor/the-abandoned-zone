@@ -2,11 +2,7 @@ package com.xaklor.util;
 
 import com.xaklor.TheAbandonedZoneMod;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.item.ToolMaterials;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.util.Lazy;
-
-import java.util.function.Supplier;
 
 public enum AbandonedZoneMaterials implements ToolMaterial {
     SCRAP_MATERIAL(4, 1000, 6.0f, 3.0f, 14, Ingredient.ofItems(TheAbandonedZoneMod.INDUSTRIAL_SCRAP)),
