@@ -24,7 +24,7 @@
                   }
                 }
               ],
-              "name": "the_abandoned_zone:brilliant_ore"
+              "name": "the_abandoned_zone:deepslate_brilliant_ore"
             },
             {
               "type": "minecraft:item",
@@ -46,5 +46,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "the_abandoned_zone:brilliant_ore"
+  "random_sequence": "the_abandoned_zone:deepslate_brilliant_ore"
 }
