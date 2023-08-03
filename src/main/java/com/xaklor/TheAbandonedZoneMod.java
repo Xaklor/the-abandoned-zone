@@ -11,7 +11,9 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potions;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
@@ -65,6 +67,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final Item LAPIS_LAZULI_DUST = new AbandonedZoneItem("lapis_lazuli_dust", new FabricItemSettings());
 	public static final Item MALEVOLENT_SPIRIT = new AbandonedZoneItem("malevolent_spirit", new FabricItemSettings());
 	public static final Item METAL_DUST = new AbandonedZoneItem("metal_dust", new FabricItemSettings());
+	public static final Item MIRACLE_CURE = new AbandonedZoneItem("miracle_cure", new FabricItemSettings());
 	public static final Item MYSTIC_DUST = new AbandonedZoneItem("mystic_dust", new FabricItemSettings());
 	public static final Item NETHERITE_DUST = new AbandonedZoneItem("netherite_dust", new FabricItemSettings());
 	public static final Item NUTRIENT_POWDER = new AbandonedZoneItem("nutrient_powder", new FabricItemSettings());
@@ -199,6 +202,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(FUEL_CANISTER);
 				entries.add(INSTANT_CAKE);
 				entries.add(NUTRIENT_POWDER);
+				entries.add(MIRACLE_CURE);
 				entries.add(ROYAL_HEART);
 				entries.add(STEEL_BONE);
 				entries.add(SPIRIT_NEWBORN);
@@ -240,6 +244,9 @@ public class TheAbandonedZoneMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		// potions
+		AbandonedZonePotions.registerPotionsRecipes();
+
 		// item group
 		Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "all_items"), ALL_ITEMS);
 	}
