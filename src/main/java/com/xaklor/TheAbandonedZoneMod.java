@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
@@ -108,6 +109,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final AbandonedZoneBlock CYAN_CRYSTAL_STONE = new AbandonedZoneBlock("cyan_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
 	public static final AbandonedZoneBlock DEEPSLATE_BRILLIANT_ORE = new AbandonedZoneBlock("deepslate_brilliant_ore", FabricBlockSettings.create().requiresTool().strength(4.5f, 6).sounds(BlockSoundGroup.DEEPSLATE), BlockType.NORMAL);
 	public static final AbandonedZoneBlock DEEPSLATE_SAPPHIRE_ORE = new AbandonedZoneBlock("deepslate_sapphire_ore", FabricBlockSettings.create().requiresTool().strength(4.5f, 6).sounds(BlockSoundGroup.DEEPSLATE), BlockType.NORMAL);
+	public static final Disintegrator DISINTEGRATOR = new Disintegrator(FabricBlockSettings.create().strength(1.5f, 3).luminance(Disintegrator.createLightLevelFromOnBlockState(15)).sounds(BlockSoundGroup.METAL));
 	public static final AbandonedZoneBlock DULL_ORE_BLOCK = new AbandonedZoneBlock("dull_ore_block", FabricBlockSettings.create().requiresTool().strength(3, 6).sounds(BlockSoundGroup.NETHERITE), BlockType.NORMAL);
 	public static final AbandonedZoneBlock GNEISS = new AbandonedZoneBlock("gneiss", FabricBlockSettings.create().requiresTool().strength(40, 6).sounds(BlockSoundGroup.DRIPSTONE_BLOCK), BlockType.PILLAR);
 	public static final AbandonedZoneBlock GNEISS_BRILLIANT_ORE = new AbandonedZoneBlock("gneiss_brilliant_ore", FabricBlockSettings.create().requiresTool().strength(50, 6).sounds(BlockSoundGroup.DRIPSTONE_BLOCK), BlockType.PILLAR);
@@ -192,6 +194,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(METEORITE_CHUNK);
 				entries.add(CONVEYOR_BELT);
 				entries.add(ASSEMBLER_ARMS);
+				entries.add(DISINTEGRATOR);
 				entries.add(SCRAP_PICK);
 				entries.add(BRILLIANT_PICK);
 				entries.add(BLUE_SAPPHIRE_PICK);
