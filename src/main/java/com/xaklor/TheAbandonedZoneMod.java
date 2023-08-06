@@ -7,17 +7,17 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potions;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -109,7 +109,6 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final AbandonedZoneBlock CYAN_CRYSTAL_STONE = new AbandonedZoneBlock("cyan_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
 	public static final AbandonedZoneBlock DEEPSLATE_BRILLIANT_ORE = new AbandonedZoneBlock("deepslate_brilliant_ore", FabricBlockSettings.create().requiresTool().strength(4.5f, 6).sounds(BlockSoundGroup.DEEPSLATE), BlockType.NORMAL);
 	public static final AbandonedZoneBlock DEEPSLATE_SAPPHIRE_ORE = new AbandonedZoneBlock("deepslate_sapphire_ore", FabricBlockSettings.create().requiresTool().strength(4.5f, 6).sounds(BlockSoundGroup.DEEPSLATE), BlockType.NORMAL);
-	public static final Disintegrator DISINTEGRATOR = new Disintegrator(FabricBlockSettings.create().strength(1.5f, 3).luminance(Disintegrator.createLightLevelFromOnBlockState(15)).sounds(BlockSoundGroup.METAL));
 	public static final AbandonedZoneBlock DULL_ORE_BLOCK = new AbandonedZoneBlock("dull_ore_block", FabricBlockSettings.create().requiresTool().strength(3, 6).sounds(BlockSoundGroup.NETHERITE), BlockType.NORMAL);
 	public static final AbandonedZoneBlock GNEISS = new AbandonedZoneBlock("gneiss", FabricBlockSettings.create().requiresTool().strength(40, 6).sounds(BlockSoundGroup.DRIPSTONE_BLOCK), BlockType.PILLAR);
 	public static final AbandonedZoneBlock GNEISS_BRILLIANT_ORE = new AbandonedZoneBlock("gneiss_brilliant_ore", FabricBlockSettings.create().requiresTool().strength(50, 6).sounds(BlockSoundGroup.DRIPSTONE_BLOCK), BlockType.PILLAR);
@@ -145,6 +144,13 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final AbandonedZoneTool STAR_HAMMER = new AbandonedZoneTool(AbandonedZoneMaterials.METEORITE_MATERIAL, 0, -2.4f, new Item.Settings(), "star_hammer", ToolType.SWORD, Enchantments.FIRE_ASPECT, Enchantments.BANE_OF_ARTHROPODS, Enchantments.SMITE, Enchantments.SHARPNESS);
 	public static final AbandonedZoneTool YELLOW_SAPPHIRE_PICK = new AbandonedZoneTool(AbandonedZoneMaterials.YELLOW_SAPPHIRE, 0, -2.8f, new Item.Settings(), "yellow_sapphire_pick", ToolType.PICKAXE);
 	//endregion
+
+	//region BLOCK ENTITIES
+	public static final Disintegrator DISINTEGRATOR = new Disintegrator(FabricBlockSettings.create().strength(1.5f, 3).luminance(Disintegrator.createLightLevelFromOnBlockState(15)).sounds(BlockSoundGroup.METAL));
+	public static final BlockEntityType<DisintegratorEntity> DISINTEGRATOR_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, DISINTEGRATOR.ID, FabricBlockEntityTypeBuilder.create(DisintegratorEntity::new, DISINTEGRATOR).build());
+	public static final ScreenHandlerType<DisintegratorScreenHandler> DISINTEGRATOR_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(DISINTEGRATOR.ID, DisintegratorScreenHandler::new);
+	//endregion
+
 
 	// item group, this gives mod items their own creative inventory page
 	private static final ItemGroup ALL_ITEMS = FabricItemGroup.builder()
