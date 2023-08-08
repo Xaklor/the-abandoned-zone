@@ -85,7 +85,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final Item SOIL_DUST = new AbandonedZoneItem("soil_dust", new FabricItemSettings());
 	public static final Item SPECTRAL_DUST = new AbandonedZoneItem("spectral_dust", new FabricItemSettings());
 	public static final Item SPIRIT_NEWBORN = new AbandonedZoneItem("spirit_newborn", new FabricItemSettings());
-	public static final Item STARUDST = new AbandonedZoneItem("stardust", new FabricItemSettings());
+	public static final Item STARDUST = new AbandonedZoneItem("stardust", new FabricItemSettings());
 	public static final Item STEEL_BONE = new AbandonedZoneItem("steel_bone", new FabricItemSettings());
 	public static final Item THE_ABANDONED_TOME = new AbandonedZoneItem("the_abandoned_tome", new FabricItemSettings());
 	public static final Item WAXY_DUST = new AbandonedZoneItem("waxy_dust", new FabricItemSettings());
@@ -149,6 +149,9 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final ScreenHandlerType<DisintegratorScreenHandler> DISINTEGRATOR_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(DISINTEGRATOR.ID, DisintegratorScreenHandler::new);
 	//endregion
 
+	//region RECIPES
+	public static final DisintegratorRecipes DISINTEGRATOR_RECIPES = new DisintegratorRecipes();
+	//endregion
 
 	// item group, this gives mod items their own creative inventory page
 	private static final ItemGroup ALL_ITEMS = FabricItemGroup.builder()
@@ -250,7 +253,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(RARE_DUST);
 				entries.add(GEMSTONE_BLEND);
 				entries.add(SAPPHIRE_DUST);
-				entries.add(STARUDST);
+				entries.add(STARDUST);
 			})
 			.build();
 
@@ -261,5 +264,6 @@ public class TheAbandonedZoneMod implements ModInitializer {
 
 		// item group
 		Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "all_items"), ALL_ITEMS);
+
 	}
 }

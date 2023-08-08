@@ -19,6 +19,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+
 public class DisintegratorEntity extends BlockEntity implements SidedInventory, NamedScreenHandlerFactory {
     protected DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
     private static final int[] TOP_SLOTS = new int[]{0};
@@ -133,6 +134,18 @@ public class DisintegratorEntity extends BlockEntity implements SidedInventory, 
 
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction dir) {
+        return true;
+    }
+
+    @Override
+    public boolean isValid(int slot, ItemStack stack) {
+        if (slot == 2) {
+            return false;
+        }
+        if (slot == 1) {
+            ItemStack itemStack = this.inventory.get(1);
+            return itemStack.isOf(TheAbandonedZoneMod.FUEL_CANISTER);
+        }
         return true;
     }
 }
