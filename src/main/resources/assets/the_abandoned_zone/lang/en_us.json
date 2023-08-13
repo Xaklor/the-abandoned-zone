@@ -113,5 +113,11 @@
 	"item.minecraft.splash_potion.effect.wither_potion": "Splash Potion of the Black Lung",
 	"item.minecraft.splash_potion.effect.wither_potion_enhanced": "Splash Potion of the Black Lung",
 	"item.minecraft.splash_potion.effect.wither_potion_extended": "Splash Potion of the Black Lung",
+	"item.minecraft.tipped_arrow.effect.haste_potion": "Arrow of Acceleration",
+	"item.minecraft.tipped_arrow.effect.haste_potion_enhanced": "Arrow of Acceleration",
+	"item.minecraft.tipped_arrow.effect.haste_potion_extended": "Arrow of Acceleration",
+	"item.minecraft.tipped_arrow.effect.wither_potion": "Arrow of the Black Lung",
+	"item.minecraft.tipped_arrow.effect.wither_potion_enhanced": "Arrow of the Black Lung",
+	"item.minecraft.tipped_arrow.effect.wither_potion_extended": "Arrow of the Black Lung",
 	"itemGroup.the_abandoned_zone.all_items": "The Abandoned Zone"
 }

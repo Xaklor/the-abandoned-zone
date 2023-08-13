@@ -29,7 +29,7 @@ public class DisintegratorEntity extends BlockEntity implements SidedInventory, 
     private static final int[] BOTTOM_SLOTS = new int[]{2};
     private static final int[] SIDE_SLOTS = new int[]{1};
     private int workTime = 0;
-    private final int maxWorkTime = 200;
+    private final int maxWorkTime = 2;
     protected final PropertyDelegate propertyDelegate = new PropertyDelegate(){
 
         @Override
@@ -231,8 +231,7 @@ public class DisintegratorEntity extends BlockEntity implements SidedInventory, 
             return false;
         }
         if (slot == 1) {
-            ItemStack itemStack = this.inventory.get(1);
-            return itemStack.isOf(TheAbandonedZoneMod.FUEL_CANISTER);
+            return stack.isOf(TheAbandonedZoneMod.FUEL_CANISTER);
         }
         return true;
     }

@@ -9,6 +9,7 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -29,12 +30,13 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.ToIntFunction;
 
 public class Disintegrator extends BlockWithEntity {
-
+    public final Item item;
     public final Identifier ID = new Identifier(TheAbandonedZoneMod.MOD_ID, "disintegrator");
     public static final BooleanProperty ON = BooleanProperty.of("on");
     public Disintegrator(Settings settings) {
         super(settings);
         setDefaultState(getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(ON, false));
+        item = new BlockItem(this, new FabricItemSettings());
         register();
     }
 
@@ -97,6 +99,6 @@ public class Disintegrator extends BlockWithEntity {
 
     private void register() {
         Registry.register(Registries.BLOCK, ID, this);
-        Registry.register(Registries.ITEM, ID, new BlockItem(this, new FabricItemSettings()));
+        Registry.register(Registries.ITEM, ID, this.item);
     }
 }

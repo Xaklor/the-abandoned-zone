@@ -7,6 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -18,9 +19,11 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
 public class AssemblerArms extends HorizontalFacingBlock {
+    public final Item item;
     VoxelShape SHAPE = createCuboidShape(0, 10, 0, 16, 16, 16);
     public AssemblerArms(Settings settings) {
         super(settings);
+        this.item = new BlockItem(this, new FabricItemSettings());
         register();
     }
 
@@ -42,7 +45,7 @@ public class AssemblerArms extends HorizontalFacingBlock {
 
     private void register() {
         Registry.register(Registries.BLOCK, new Identifier(TheAbandonedZoneMod.MOD_ID, "assembler_arms"), this);
-        Registry.register(Registries.ITEM, new Identifier(TheAbandonedZoneMod.MOD_ID, "assembler_arms"), new BlockItem(this, new FabricItemSettings()));
+        Registry.register(Registries.ITEM, new Identifier(TheAbandonedZoneMod.MOD_ID, "assembler_arms"), this.item);
 
     }
 }

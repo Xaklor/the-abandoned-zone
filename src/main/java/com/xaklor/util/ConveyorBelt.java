@@ -7,6 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -26,9 +27,11 @@ public class ConveyorBelt extends HorizontalFacingBlock {
     private static final VoxelShape SW_LEG = createCuboidShape(12,0, 12, 16, 7,  16);
     private static final VoxelShape BODY =   createCuboidShape(0, 7, 0,  16, 12, 16);
     protected static final VoxelShape SHAPE = VoxelShapes.union(NE_LEG, SE_LEG, NW_LEG, SW_LEG, BODY);
+    public final Item item;
     public ConveyorBelt(Settings settings) {
         super(settings);
         setDefaultState(getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
+        this.item = new BlockItem(this, new FabricItemSettings());
         register();
     }
 
@@ -49,6 +52,6 @@ public class ConveyorBelt extends HorizontalFacingBlock {
 
     private void register() {
         Registry.register(Registries.BLOCK, new Identifier(TheAbandonedZoneMod.MOD_ID, "conveyor_belt"), this);
-        Registry.register(Registries.ITEM, new Identifier(TheAbandonedZoneMod.MOD_ID, "conveyor_belt"), new BlockItem(this, new FabricItemSettings()));
+        Registry.register(Registries.ITEM, new Identifier(TheAbandonedZoneMod.MOD_ID, "conveyor_belt"), this.item);
     }
 }
