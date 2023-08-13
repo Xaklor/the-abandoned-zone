@@ -29,7 +29,7 @@ public class DisintegratorEntity extends BlockEntity implements SidedInventory, 
     private static final int[] BOTTOM_SLOTS = new int[]{2};
     private static final int[] SIDE_SLOTS = new int[]{1};
     private int workTime = 0;
-    private final int maxWorkTime = 2;
+    private final int maxWorkTime = 200;
     protected final PropertyDelegate propertyDelegate = new PropertyDelegate(){
 
         @Override
