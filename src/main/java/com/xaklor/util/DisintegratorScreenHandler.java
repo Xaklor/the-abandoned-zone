@@ -6,19 +6,24 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ArrayPropertyDelegate;
+import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 
 public class DisintegratorScreenHandler extends ScreenHandler {
     private final Inventory inventory;
+    private final PropertyDelegate propertyDelegate;
     private static final int INVENTORY_SIZE = 3;
 
     public DisintegratorScreenHandler(int syncId, PlayerInventory playerInventory) {
-        this(syncId, playerInventory, new SimpleInventory(3));
+        this(syncId, playerInventory, new SimpleInventory(3), new ArrayPropertyDelegate(1));
     }
-    public DisintegratorScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
+    public DisintegratorScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory, PropertyDelegate propertyDelegate) {
         super(TheAbandonedZoneMod.DISINTEGRATOR_SCREEN_HANDLER, syncId);
         this.inventory = inventory;
+        this.propertyDelegate = propertyDelegate;
+        this.addProperties(propertyDelegate);
         checkSize(inventory, INVENTORY_SIZE);
         inventory.onOpen(playerInventory.player);
 
@@ -93,5 +98,13 @@ public class DisintegratorScreenHandler extends ScreenHandler {
     @Override
     public boolean canUse(PlayerEntity player) {
         return this.inventory.canPlayerUse(player);
+    }
+
+    public boolean isOn() {
+        return propertyDelegate.get(0) > 0;
+    }
+
+    public int getWorkProgress() {
+        return propertyDelegate.get(0);
     }
 }

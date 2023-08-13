@@ -19,17 +19,13 @@ public class DisintegratorScreen extends HandledScreen<DisintegratorScreenHandle
         int i = this.x;
         int j = this.y;
         context.drawTexture(TEXTURE, i, j, 0, 0, this.backgroundWidth, this.backgroundHeight);
-        /* progression arrow
-        if (((AbstractFurnaceScreenHandler)this.handler).isBurning()) {
-            k = ((AbstractFurnaceScreenHandler)this.handler).getFuelProgress();
-            context.drawTexture(this.background, i + 56, j + 36 + 12 - k, 176, 12 - k, 14, k + 1);
+        if (this.handler.isOn()) {
+            k = this.handler.getWorkProgress() / 8;
+            // progress arrow
+            context.drawTexture(TEXTURE, i + 101, j + 35, 176, 0, 24 - k + 1, 16);
+            // fuel arrow
+            context.drawTexture(TEXTURE, i + 44, j + 20, 176, 17, 32, 47);
         }
-
-        progression flame
-        k = ((AbstractFurnaceScreenHandler)this.handler).getCookProgress();
-        context.drawTexture(TEXTURE, i + 79, j + 34, 176, 14, k + 1, 16);
-         */
-
     }
 
     @Override
