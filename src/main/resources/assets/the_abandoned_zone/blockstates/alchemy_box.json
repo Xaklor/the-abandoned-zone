@@ -1,0 +1,13 @@
+    {
+      "variants": {
+        "facing=north,on=false": { "model": "the_abandoned_zone:block/alchemy_box" },
+        "facing=east,on=false":  { "model": "the_abandoned_zone:block/alchemy_box",  "y":  90 },
+        "facing=south,on=false": { "model": "the_abandoned_zone:block/alchemy_box",  "y": 180 },
+        "facing=west,on=false":  { "model": "the_abandoned_zone:block/alchemy_box",  "y": 270 },
+        "facing=north,on=true":  { "model": "the_abandoned_zone:block/alchemy_box_on" },
+        "facing=east,on=true":   { "model": "the_abandoned_zone:block/alchemy_box_on",  "y":  90 },
+        "facing=south,on=true":  { "model": "the_abandoned_zone:block/alchemy_box_on",  "y": 180 },
+        "facing=west,on=true":   { "model": "the_abandoned_zone:block/alchemy_box_on",  "y": 270 }
+      }
+    }
+

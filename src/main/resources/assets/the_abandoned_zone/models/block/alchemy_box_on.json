@@ -1,0 +1,8 @@
+    {
+      "parent": "block/orientable",
+      "textures": {
+	"front": "the_abandoned_zone:block/alchemy_box_front_on",
+	"side": "the_abandoned_zone:block/alchemy_box",
+	"top": "the_abandoned_zone:block/alchemy_box"
+      }
+    }

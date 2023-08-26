@@ -147,6 +147,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final Disintegrator DISINTEGRATOR = new Disintegrator(FabricBlockSettings.create().strength(1.5f, 3).luminance(Disintegrator.createLightLevelFromOnBlockState(15)).sounds(BlockSoundGroup.METAL));
 	public static final BlockEntityType<DisintegratorEntity> DISINTEGRATOR_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, DISINTEGRATOR.ID, FabricBlockEntityTypeBuilder.create(DisintegratorEntity::new, DISINTEGRATOR).build());
 	public static final ScreenHandlerType<DisintegratorScreenHandler> DISINTEGRATOR_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(DISINTEGRATOR.ID, DisintegratorScreenHandler::new);
+	public static final AlchemyBox ALCHEMY_BOX = new AlchemyBox(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.METAL));
 	//endregion
 
 	//region RECIPES
@@ -202,6 +203,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(CONVEYOR_BELT);
 				entries.add(ASSEMBLER_ARMS);
 				entries.add(DISINTEGRATOR);
+				entries.add(ALCHEMY_BOX);
 				entries.add(SCRAP_PICK);
 				entries.add(BRILLIANT_PICK);
 				entries.add(BLUE_SAPPHIRE_PICK);
