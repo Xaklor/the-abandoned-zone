@@ -2,6 +2,7 @@ package com.xaklor;
 
 import com.xaklor.util.AbandonedZoneBlock;
 import com.xaklor.util.DisintegratorScreen;
+import com.xaklor.util.AlchemyBoxScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
@@ -21,5 +22,6 @@ public class TheAbandonedZoneModClient implements ClientModInitializer {
 
 		// screen registrations
 		HandledScreens.register(TheAbandonedZoneMod.DISINTEGRATOR_SCREEN_HANDLER, DisintegratorScreen::new);
+		HandledScreens.register(TheAbandonedZoneMod.ALCHEMY_BOX_SCREEN_HANDLER, AlchemyBoxScreen::new);
 	}
 }

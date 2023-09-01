@@ -81,7 +81,7 @@ public class Disintegrator extends BlockWithEntity {
     @Override
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type,TheAbandonedZoneMod.DISINTEGRATOR_ENTITY , (DisintegratorEntity::tick));
+        return checkType(type, TheAbandonedZoneMod.DISINTEGRATOR_ENTITY, (DisintegratorEntity::tick));
     }
 
     @Override

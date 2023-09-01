@@ -148,9 +148,12 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final BlockEntityType<DisintegratorEntity> DISINTEGRATOR_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, DISINTEGRATOR.ID, FabricBlockEntityTypeBuilder.create(DisintegratorEntity::new, DISINTEGRATOR).build());
 	public static final ScreenHandlerType<DisintegratorScreenHandler> DISINTEGRATOR_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(DISINTEGRATOR.ID, DisintegratorScreenHandler::new);
 	public static final AlchemyBox ALCHEMY_BOX = new AlchemyBox(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.METAL));
+	public static final BlockEntityType<AlchemyBoxEntity> ALCHEMY_BOX_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, ALCHEMY_BOX.ID, FabricBlockEntityTypeBuilder.create(AlchemyBoxEntity::new, ALCHEMY_BOX).build());
+	public static final ScreenHandlerType<AlchemyBoxScreenHandler> ALCHEMY_BOX_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(ALCHEMY_BOX.ID, AlchemyBoxScreenHandler::new);
 	//endregion
 
 	//region RECIPES
+	public static final AlchemyBoxRecipes ALCHEMY_BOX_RECIPES = new AlchemyBoxRecipes();
 	public static final DisintegratorRecipes DISINTEGRATOR_RECIPES = new DisintegratorRecipes();
 	//endregion
 
