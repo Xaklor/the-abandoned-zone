@@ -144,12 +144,14 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	//endregion
 
 	//region BLOCK ENTITIES
-	public static final Disintegrator DISINTEGRATOR = new Disintegrator(FabricBlockSettings.create().strength(1.5f, 3).luminance(Disintegrator.createLightLevelFromOnBlockState(15)).sounds(BlockSoundGroup.METAL));
-	public static final BlockEntityType<DisintegratorEntity> DISINTEGRATOR_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, DISINTEGRATOR.ID, FabricBlockEntityTypeBuilder.create(DisintegratorEntity::new, DISINTEGRATOR).build());
-	public static final ScreenHandlerType<DisintegratorScreenHandler> DISINTEGRATOR_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(DISINTEGRATOR.ID, DisintegratorScreenHandler::new);
 	public static final AlchemyBox ALCHEMY_BOX = new AlchemyBox(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.METAL));
 	public static final BlockEntityType<AlchemyBoxEntity> ALCHEMY_BOX_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, ALCHEMY_BOX.ID, FabricBlockEntityTypeBuilder.create(AlchemyBoxEntity::new, ALCHEMY_BOX).build());
 	public static final ScreenHandlerType<AlchemyBoxScreenHandler> ALCHEMY_BOX_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(ALCHEMY_BOX.ID, AlchemyBoxScreenHandler::new);
+	public static final Disintegrator DISINTEGRATOR = new Disintegrator(FabricBlockSettings.create().strength(1.5f, 3).luminance(Disintegrator.createLightLevelFromOnBlockState(15)).sounds(BlockSoundGroup.METAL));
+	public static final BlockEntityType<DisintegratorEntity> DISINTEGRATOR_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, DISINTEGRATOR.ID, FabricBlockEntityTypeBuilder.create(DisintegratorEntity::new, DISINTEGRATOR).build());
+	public static final ScreenHandlerType<DisintegratorScreenHandler> DISINTEGRATOR_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(DISINTEGRATOR.ID, DisintegratorScreenHandler::new);
+	public static final GreedyWell GREEDY_WELL = new GreedyWell(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.STONE));
+	public static final WishingWell WISHING_WELL = new WishingWell(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.STONE));
 	//endregion
 
 	//region RECIPES
@@ -207,6 +209,8 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(ASSEMBLER_ARMS);
 				entries.add(DISINTEGRATOR);
 				entries.add(ALCHEMY_BOX);
+				entries.add(GREEDY_WELL);
+				entries.add(WISHING_WELL);
 				entries.add(SCRAP_PICK);
 				entries.add(BRILLIANT_PICK);
 				entries.add(BLUE_SAPPHIRE_PICK);

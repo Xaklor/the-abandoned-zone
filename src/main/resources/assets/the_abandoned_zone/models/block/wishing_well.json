@@ -1,0 +1,8 @@
+    {
+      "parent": "block/orientable",
+      "textures": {
+	"front": "the_abandoned_zone:block/wishing_well",
+	"side": "minecraft:block/stonecutter_bottom",
+	"top": "minecraft:block/stonecutter_bottom"
+      }
+    }

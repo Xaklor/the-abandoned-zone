@@ -1,0 +1,13 @@
+    {
+      "variants": {
+        "facing=north,inactive=false": { "model": "the_abandoned_zone:block/wishing_well" },
+        "facing=east,inactive=false":  { "model": "the_abandoned_zone:block/wishing_well",  "y":  90 },
+        "facing=south,inactive=false": { "model": "the_abandoned_zone:block/wishing_well",  "y": 180 },
+        "facing=west,inactive=false":  { "model": "the_abandoned_zone:block/wishing_well",  "y": 270 },
+        "facing=north,inactive=true":  { "model": "the_abandoned_zone:block/wishing_well_inactive" },
+        "facing=east,inactive=true":   { "model": "the_abandoned_zone:block/wishing_well_inactive",  "y":  90 },
+        "facing=south,inactive=true":  { "model": "the_abandoned_zone:block/wishing_well_inactive",  "y": 180 },
+        "facing=west,inactive=true":   { "model": "the_abandoned_zone:block/wishing_well_inactive",  "y": 270 }
+      }
+    }
+
