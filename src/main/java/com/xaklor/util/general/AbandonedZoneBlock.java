@@ -1,4 +1,4 @@
-package com.xaklor.util;
+package com.xaklor.util.general;
 
 import com.xaklor.TheAbandonedZoneMod;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;

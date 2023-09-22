@@ -1,5 +1,6 @@
 package com.xaklor.util;
 
+import com.xaklor.util.alchemybox.AlchemyBoxScreenHandler;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerInventory;

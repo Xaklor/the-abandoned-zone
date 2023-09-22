@@ -1,8 +1,20 @@
 package com.xaklor;
 
 import com.xaklor.util.*;
-import com.xaklor.util.AbandonedZoneBlock.BlockType;
-import com.xaklor.util.AbandonedZoneTool.ToolType;
+import com.xaklor.util.alchemybox.AlchemyBox;
+import com.xaklor.util.alchemybox.AlchemyBoxEntity;
+import com.xaklor.util.alchemybox.AlchemyBoxRecipes;
+import com.xaklor.util.alchemybox.AlchemyBoxScreenHandler;
+import com.xaklor.util.disintegrator.Disintegrator;
+import com.xaklor.util.disintegrator.DisintegratorEntity;
+import com.xaklor.util.disintegrator.DisintegratorRecipes;
+import com.xaklor.util.disintegrator.DisintegratorScreenHandler;
+import com.xaklor.util.general.*;
+import com.xaklor.util.general.AbandonedZoneBlock.BlockType;
+import com.xaklor.util.general.AbandonedZoneTool.ToolType;
+import com.xaklor.util.wells.GreedyWell;
+import com.xaklor.util.wells.GreedyWellEntity;
+import com.xaklor.util.wells.WishingWell;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -151,6 +163,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final BlockEntityType<DisintegratorEntity> DISINTEGRATOR_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, DISINTEGRATOR.ID, FabricBlockEntityTypeBuilder.create(DisintegratorEntity::new, DISINTEGRATOR).build());
 	public static final ScreenHandlerType<DisintegratorScreenHandler> DISINTEGRATOR_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(DISINTEGRATOR.ID, DisintegratorScreenHandler::new);
 	public static final GreedyWell GREEDY_WELL = new GreedyWell(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.STONE));
+	public static final BlockEntityType<GreedyWellEntity> GREEDY_WELL_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, GREEDY_WELL.ID, FabricBlockEntityTypeBuilder.create(GreedyWellEntity::new, GREEDY_WELL).build());
 	public static final WishingWell WISHING_WELL = new WishingWell(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.STONE));
 	//endregion
 
@@ -270,7 +283,6 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public void onInitialize() {
 		// potions
 		AbandonedZonePotions.registerPotionsRecipes();
-
 		// item group
 		Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "all_items"), ALL_ITEMS);
 

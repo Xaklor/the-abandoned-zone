@@ -1,6 +1,7 @@
-package com.xaklor.util;
+package com.xaklor.util.wells;
 
 import com.xaklor.TheAbandonedZoneMod;
+import com.xaklor.util.disintegrator.DisintegratorEntity;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -27,7 +28,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class GreedyWell extends HorizontalFacingBlock {
+public class GreedyWell extends BlockWithEntity {
     public final Item item;
     public final Identifier ID = new Identifier(TheAbandonedZoneMod.MOD_ID, "greedy_well");
 
@@ -56,18 +57,19 @@ public class GreedyWell extends HorizontalFacingBlock {
         return BlockRenderType.MODEL;
     }
 
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (world.isClient) {
-            return ActionResult.SUCCESS;
-        }
-        world.setBlockState(pos, state.with(INACTIVE, !state.get(INACTIVE)));
-
-        return ActionResult.SUCCESS;
-    }
-
     private void register() {
         Registry.register(Registries.BLOCK, ID, this);
         Registry.register(Registries.ITEM, ID, this.item);
+    }
+
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new GreedyWellEntity(pos, state);
+    }
+
+    @Override
+    @Nullable
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, TheAbandonedZoneMod.GREEDY_WELL_ENTITY, (GreedyWellEntity::tick));
     }
 }

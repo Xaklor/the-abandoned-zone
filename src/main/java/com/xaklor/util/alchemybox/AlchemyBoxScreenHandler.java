@@ -1,4 +1,4 @@
-package com.xaklor.util;
+package com.xaklor.util.alchemybox;
 
 import com.xaklor.TheAbandonedZoneMod;
 import net.minecraft.entity.player.PlayerEntity;

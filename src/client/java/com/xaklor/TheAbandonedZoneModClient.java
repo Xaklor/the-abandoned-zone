@@ -1,6 +1,6 @@
 package com.xaklor;
 
-import com.xaklor.util.AbandonedZoneBlock;
+import com.xaklor.util.general.AbandonedZoneBlock;
 import com.xaklor.util.DisintegratorScreen;
 import com.xaklor.util.AlchemyBoxScreen;
 import net.fabricmc.api.ClientModInitializer;

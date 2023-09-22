@@ -1,6 +1,7 @@
-package com.xaklor.util;
+package com.xaklor.util.alchemybox;
 
 import com.xaklor.TheAbandonedZoneMod;
+import com.xaklor.util.disintegrator.Disintegrator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -28,7 +29,7 @@ public class AlchemyBoxEntity extends BlockEntity implements SidedInventory, Nam
     private static final int[] BOTTOM_SLOTS = new int[]{3};
     private static final int[] SIDE_SLOTS = new int[]{2};
     private int workTime = 0;
-    private final int maxWorkTime = 1;
+    private final int maxWorkTime = 200;
     private int fuelCharges = 0;
 
     protected final PropertyDelegate propertyDelegate = new PropertyDelegate(){

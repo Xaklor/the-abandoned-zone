@@ -1,4 +1,4 @@
-package com.xaklor.util;
+package com.xaklor.util.disintegrator;
 
 import com.xaklor.TheAbandonedZoneMod;
 import net.minecraft.block.Block;

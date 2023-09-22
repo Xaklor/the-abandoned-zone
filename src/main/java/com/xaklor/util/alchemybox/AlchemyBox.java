@@ -1,4 +1,4 @@
-package com.xaklor.util;
+package com.xaklor.util.alchemybox;
 
 import com.xaklor.TheAbandonedZoneMod;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -27,23 +27,25 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class WishingWell extends HorizontalFacingBlock {
+public class AlchemyBox extends BlockWithEntity {
     public final Item item;
-    public final Identifier ID = new Identifier(TheAbandonedZoneMod.MOD_ID, "wishing_well");
-
-    public static final BooleanProperty INACTIVE = BooleanProperty.of("inactive");
-
-    public WishingWell(Settings settings) {
+    public final Identifier ID = new Identifier(TheAbandonedZoneMod.MOD_ID, "alchemy_box");
+    public static final BooleanProperty ON = BooleanProperty.of("on");
+    public AlchemyBox(Settings settings) {
         super(settings);
-        setDefaultState(getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(INACTIVE, false));
+        setDefaultState(getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(ON, false));
         item = new BlockItem(this, new FabricItemSettings());
         register();
     }
 
     @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new AlchemyBoxEntity(pos, state);
+    }
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(Properties.HORIZONTAL_FACING);
-        builder.add(INACTIVE);
+        builder.add(ON);
     }
 
     @Override
@@ -52,8 +54,26 @@ public class WishingWell extends HorizontalFacingBlock {
     }
 
     @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (state.isOf(newState.getBlock())) {
+            return;
+        }
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof Inventory) {
+            ItemScatterer.spawn(world, pos, (Inventory) blockEntity);
+            // world.updateComparators(pos, this);
+        }
+        super.onStateReplaced(state, world, pos, newState, moved);
+    }
+    @Override
     public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
+    }
+
+    @Override
+    @Nullable
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, TheAbandonedZoneMod.ALCHEMY_BOX_ENTITY, (AlchemyBoxEntity::tick));
     }
 
     @Override
@@ -61,8 +81,10 @@ public class WishingWell extends HorizontalFacingBlock {
         if (world.isClient) {
             return ActionResult.SUCCESS;
         }
-        world.setBlockState(pos, state.with(INACTIVE, !state.get(INACTIVE)));
-
+        NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(world, pos);
+        if (screenHandlerFactory != null) {
+            player.openHandledScreen(screenHandlerFactory);
+        }
         return ActionResult.SUCCESS;
     }
 
@@ -70,4 +92,5 @@ public class WishingWell extends HorizontalFacingBlock {
         Registry.register(Registries.BLOCK, ID, this);
         Registry.register(Registries.ITEM, ID, this.item);
     }
+
 }
