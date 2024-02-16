@@ -14,6 +14,7 @@ import com.xaklor.util.general.AbandonedZoneBlock.BlockType;
 import com.xaklor.util.general.AbandonedZoneTool.ToolType;
 import com.xaklor.util.wells.GreedyWell;
 import com.xaklor.util.wells.GreedyWellEntity;
+import com.xaklor.util.wells.WellScores;
 import com.xaklor.util.wells.WishingWell;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -170,6 +171,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	//region RECIPES
 	public static final AlchemyBoxRecipes ALCHEMY_BOX_RECIPES = new AlchemyBoxRecipes();
 	public static final DisintegratorRecipes DISINTEGRATOR_RECIPES = new DisintegratorRecipes();
+	public static final WellScores WELL_SCORES = new WellScores();
 	//endregion
 
 	// item group, this gives mod items their own creative inventory page
