@@ -18,12 +18,12 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class GreedyWellEntity extends BlockEntity {
+public class WishingWellEntity extends BlockEntity {
     private int numItems = 0;
     private int sumItems = 0;
     private boolean inactive = true;
-    private static final int MAX_ITEMS = 20;
-    private static final GreedyWellPrizes PRIZES = new GreedyWellPrizes();
+    private static final int MAX_ITEMS = 10;
+    private static final WishingWellPrizes PRIZES = new WishingWellPrizes();
     private static final Vec3i[] BLOCK_LOCATIONS = {
             // back
             new Vec3i(1, 0, 0),
@@ -102,8 +102,8 @@ public class GreedyWellEntity extends BlockEntity {
     private final Vec3i[] rotatedAir = new Vec3i[AIR_LOCATIONS.length];
 
 
-    public GreedyWellEntity(BlockPos pos, BlockState state) {
-        super(TheAbandonedZoneMod.GREEDY_WELL_ENTITY, pos, state);
+    public WishingWellEntity(BlockPos pos, BlockState state) {
+        super(TheAbandonedZoneMod.WISHING_WELL_ENTITY, pos, state);
 
         switch (state.get(Properties.HORIZONTAL_FACING)) {
             case NORTH -> {
@@ -129,7 +129,7 @@ public class GreedyWellEntity extends BlockEntity {
         }
     }
 
-    public static void tick (World world, BlockPos pos, BlockState state, GreedyWellEntity entity) {
+    public static void tick (World world, BlockPos pos, BlockState state, WishingWellEntity entity) {
         if (!world.isClient) {
             boolean changed = false;
             // is this multiblock structure complete? only check periodically for performance
@@ -137,7 +137,7 @@ public class GreedyWellEntity extends BlockEntity {
                 boolean isValid = verifyStructure(world, pos, entity.rotatedBlocks, entity.rotatedWater, entity.rotatedAir);
                 if (isValid == entity.inactive) {
                     entity.inactive = !entity.inactive;
-                    world.setBlockState(pos, state.with(GreedyWell.INACTIVE, entity.inactive));
+                    world.setBlockState(pos, state.with(WishingWell.INACTIVE, entity.inactive));
                     changed = true;
                 }
             }
@@ -207,21 +207,21 @@ public class GreedyWellEntity extends BlockEntity {
         double spawnX = pos.getX() + rotatedAir[12].getX() + 0.5;
         double spawnY = pos.getY() + rotatedAir[12].getY() + 0.5;
         double spawnZ = pos.getZ() + rotatedAir[12].getZ() + 0.5;
-        if (sumItems >= 100) {
+        if (sumItems >= 50) {
             Item v = PRIZES.tier5[ThreadLocalRandom.current().nextInt(0, PRIZES.tier5.length)];
             prize = new ItemEntity(world, spawnX, spawnY, spawnZ, new ItemStack(v, 1), 0, 0, 0);
-        } else if (sumItems >= 70) {
+        } else if (sumItems >= 35) {
             Item v = PRIZES.tier4[ThreadLocalRandom.current().nextInt(0, PRIZES.tier4.length)];
-            prize = new ItemEntity(world, spawnX, spawnY, spawnZ, new ItemStack(v, 15), 0, 0, 0);
-        } else if (sumItems >= 60) {
-            Item v = PRIZES.tier3[ThreadLocalRandom.current().nextInt(0, PRIZES.tier3.length)];
-            prize = new ItemEntity(world, spawnX, spawnY, spawnZ, new ItemStack(v, 15), 0, 0, 0);
+            prize = new ItemEntity(world, spawnX, spawnY, spawnZ, new ItemStack(v, 10), 0, 0, 0);
         } else if (sumItems >= 30) {
+            Item v = PRIZES.tier3[ThreadLocalRandom.current().nextInt(0, PRIZES.tier3.length)];
+            prize = new ItemEntity(world, spawnX, spawnY, spawnZ, new ItemStack(v, 10), 0, 0, 0);
+        } else if (sumItems >= 15) {
             Item v = PRIZES.tier2[ThreadLocalRandom.current().nextInt(0, PRIZES.tier2.length)];
-            prize = new ItemEntity(world, spawnX, spawnY, spawnZ, new ItemStack(v, 20), 0, 0, 0);
+            prize = new ItemEntity(world, spawnX, spawnY, spawnZ, new ItemStack(v, 10), 0, 0, 0);
         } else if (sumItems >= 1) {
             Item v = PRIZES.tier1[ThreadLocalRandom.current().nextInt(0, PRIZES.tier1.length)];
-            prize = new ItemEntity(world, spawnX, spawnY, spawnZ, new ItemStack(v, 20), 0, 0, 0);
+            prize = new ItemEntity(world, spawnX, spawnY, spawnZ, new ItemStack(v, 10), 0, 0, 0);
         } else {
             Item v = PRIZES.tier0[ThreadLocalRandom.current().nextInt(0, PRIZES.tier0.length)];
             prize = new ItemEntity(world, spawnX, spawnY, spawnZ, new ItemStack(v, 1), 0, 0, 0);
