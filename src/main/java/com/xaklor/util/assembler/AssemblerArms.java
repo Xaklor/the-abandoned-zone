@@ -20,7 +20,7 @@ import net.minecraft.world.BlockView;
 
 public class AssemblerArms extends HorizontalFacingBlock {
     public final Item item;
-    VoxelShape SHAPE = createCuboidShape(0, 10, 0, 16, 16, 16);
+    VoxelShape SHAPE = createCuboidShape(1, 10, 1, 15, 16, 15);
     public AssemblerArms(Settings settings) {
         super(settings);
         this.item = new BlockItem(this, new FabricItemSettings());

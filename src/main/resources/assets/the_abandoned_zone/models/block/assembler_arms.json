@@ -3,8 +3,8 @@
 	"texture_size": [32, 32],
 	"parent": "block/block",
 	"textures": {
-		"main": "assembler_arms_new",
-		"particle": "assembler_arms_new"
+		"main": "the_abandoned_zone:block/assembler_arms_new",
+		"particle": "the_abandoned_zone:block/assembler_arms_new"
 	},
 	"elements": [
 		{
@@ -63,7 +63,7 @@
 				"east": {"uv": [7.5, 0, 14.5, 3], "texture": "#main"},
 				"south": {"uv": [7.5, 0, 14.5, 3], "texture": "#main"},
 				"west": {"uv": [7.5, 0, 14.5, 3], "texture": "#main"},
-				"up": {"uv": [7, 14.5, 0, 7.5], "texture": "#main"},
+				"up": {"uv": [7, 14.5, 0, 7.5], "texture": "#main", "cullface": "up"},
 				"down": {"uv": [7, 0, 0, 7], "texture": "#main"}
 			}
 		}
