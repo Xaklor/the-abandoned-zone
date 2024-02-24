@@ -5,6 +5,9 @@ import com.xaklor.util.alchemybox.AlchemyBox;
 import com.xaklor.util.alchemybox.AlchemyBoxEntity;
 import com.xaklor.util.alchemybox.AlchemyBoxRecipes;
 import com.xaklor.util.alchemybox.AlchemyBoxScreenHandler;
+import com.xaklor.util.assembler.Assembler;
+import com.xaklor.util.assembler.AssemblerArms;
+import com.xaklor.util.assembler.ConveyorBelt;
 import com.xaklor.util.disintegrator.Disintegrator;
 import com.xaklor.util.disintegrator.DisintegratorEntity;
 import com.xaklor.util.disintegrator.DisintegratorRecipes;
@@ -157,6 +160,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final AlchemyBox ALCHEMY_BOX = new AlchemyBox(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.METAL));
 	public static final BlockEntityType<AlchemyBoxEntity> ALCHEMY_BOX_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, ALCHEMY_BOX.ID, FabricBlockEntityTypeBuilder.create(AlchemyBoxEntity::new, ALCHEMY_BOX).build());
 	public static final ScreenHandlerType<AlchemyBoxScreenHandler> ALCHEMY_BOX_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(ALCHEMY_BOX.ID, AlchemyBoxScreenHandler::new);
+	public static final Assembler ASSEMBLER = new Assembler(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.METAL));
 	public static final Disintegrator DISINTEGRATOR = new Disintegrator(FabricBlockSettings.create().strength(1.5f, 3).luminance(Disintegrator.createLightLevelFromOnBlockState(15)).sounds(BlockSoundGroup.METAL));
 	public static final BlockEntityType<DisintegratorEntity> DISINTEGRATOR_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, DISINTEGRATOR.ID, FabricBlockEntityTypeBuilder.create(DisintegratorEntity::new, DISINTEGRATOR).build());
 	public static final ScreenHandlerType<DisintegratorScreenHandler> DISINTEGRATOR_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(DISINTEGRATOR.ID, DisintegratorScreenHandler::new);
@@ -218,6 +222,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(PURPLE_SAPPHIRE);
 				entries.add(PINK_SAPPHIRE);
 				entries.add(METEORITE_CHUNK);
+				entries.add(ASSEMBLER);
 				entries.add(CONVEYOR_BELT);
 				entries.add(ASSEMBLER_ARMS);
 				entries.add(DISINTEGRATOR);

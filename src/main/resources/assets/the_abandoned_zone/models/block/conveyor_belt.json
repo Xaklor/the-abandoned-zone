@@ -1,4 +1,5 @@
 {
+    "parent": "block/block",
     "textures": {
 	"particle": "the_abandoned_zone:block/conveyor_belt_top",
         "top": "the_abandoned_zone:block/conveyor_belt_top",

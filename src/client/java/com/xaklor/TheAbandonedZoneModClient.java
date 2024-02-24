@@ -18,7 +18,7 @@ public class TheAbandonedZoneModClient implements ClientModInitializer {
 			if (b.type == AbandonedZoneBlock.BlockType.TRANSPARENT)
 				BlockRenderLayerMap.INSTANCE.putBlock(b.block, RenderLayer.getTranslucent());
 		});
-		BlockRenderLayerMap.INSTANCE.putBlock(TheAbandonedZoneMod.ASSEMBLER_ARMS, RenderLayer.getCutout());
+		// BlockRenderLayerMap.INSTANCE.putBlock(TheAbandonedZoneMod.ASSEMBLER_ARMS, RenderLayer.getCutout());
 
 		// screen registrations
 		HandledScreens.register(TheAbandonedZoneMod.DISINTEGRATOR_SCREEN_HANDLER, DisintegratorScreen::new);
