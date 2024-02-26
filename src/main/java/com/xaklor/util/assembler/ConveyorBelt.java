@@ -21,12 +21,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
 public class ConveyorBelt extends HorizontalFacingBlock {
-    private static final VoxelShape NE_LEG = createCuboidShape(0 ,0, 0,  4,  7,  4);
-    private static final VoxelShape SE_LEG = createCuboidShape(0, 0, 12, 4,  7,  16);
-    private static final VoxelShape NW_LEG = createCuboidShape(12,0, 0,  16, 7,  4);
-    private static final VoxelShape SW_LEG = createCuboidShape(12,0, 12, 16, 7,  16);
-    private static final VoxelShape BODY =   createCuboidShape(0, 7, 0,  16, 12, 16);
-    protected static final VoxelShape SHAPE = VoxelShapes.union(NE_LEG, SE_LEG, NW_LEG, SW_LEG, BODY);
+    protected static final VoxelShape SHAPE = createCuboidShape(0, 0, 0,  16, 5, 16);
     public final Item item;
     public ConveyorBelt(Settings settings) {
         super(settings);
