@@ -4,6 +4,7 @@
 	"parent": "block/block",
 	"textures": {
 		"main": "the_abandoned_zone:block/assembler_new",
+		"screen": "the_abandoned_zone:block/assembler_top_on",
 		"particle": "the_abandoned_zone:block/assembler_new"
 	},
 	"elements": [
@@ -63,7 +64,7 @@
 				"east": {"uv": [8, 1.5, 16, 3], "texture": "#main"},
 				"south": {"uv": [8, 1.5, 16, 3], "texture": "#main"},
 				"west": {"uv": [8, 1.5, 16, 3], "texture": "#main"},
-				"up": {"uv": [8, 8, 16, 16], "texture": "#main"},
+				"up": {"uv": [8, 8, 16, 16], "texture": "#screen"},
 				"down": {"uv": [0, 0, 8, 8], "texture": "#main"}
 			}
 		},
