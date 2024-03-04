@@ -300,6 +300,5 @@ public class TheAbandonedZoneMod implements ModInitializer {
 		AbandonedZonePotions.registerPotionsRecipes();
 		// item group
 		Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "all_items"), ALL_ITEMS);
-		Blocks.ENDER_CHEST
 	}
 }

@@ -105,7 +105,7 @@ public class SculkChestEntity
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return GenericContainerScreenHandler.createGeneric9x6(syncId, playerInventory, this);
+        return GenericContainerScreenHandler.createGeneric9x3(syncId, playerInventory, this);
     }
 
     // Inventory methods
