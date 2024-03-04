@@ -14,6 +14,8 @@ import com.xaklor.util.general.*;
 import com.xaklor.util.general.AbandonedZoneBlock.BlockType;
 import com.xaklor.util.general.AbandonedZoneTool.ToolType;
 import com.xaklor.util.other.NotPlayerHead;
+import com.xaklor.util.sculkchest.SculkChest;
+import com.xaklor.util.sculkchest.SculkChestEntity;
 import com.xaklor.util.wells.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -169,6 +171,8 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final ScreenHandlerType<DisintegratorScreenHandler> DISINTEGRATOR_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(DISINTEGRATOR.ID, DisintegratorScreenHandler::new);
 	public static final GreedyWell GREEDY_WELL = new GreedyWell(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.STONE));
 	public static final BlockEntityType<GreedyWellEntity> GREEDY_WELL_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, GREEDY_WELL.ID, FabricBlockEntityTypeBuilder.create(GreedyWellEntity::new, GREEDY_WELL).build());
+	public static final SculkChest SCULK_CHEST = new SculkChest(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.SCULK));
+	public static final BlockEntityType<SculkChestEntity> SCULK_CHEST_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, SCULK_CHEST.ID, FabricBlockEntityTypeBuilder.create(SculkChestEntity::new, SCULK_CHEST).build());
 	public static final WishingWell WISHING_WELL = new WishingWell(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.STONE));
 	public static final BlockEntityType<WishingWellEntity> WISHING_WELL_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, WISHING_WELL.ID, FabricBlockEntityTypeBuilder.create(WishingWellEntity::new, WISHING_WELL).build());
 	//endregion
@@ -233,6 +237,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(ALCHEMY_BOX);
 				entries.add(GREEDY_WELL);
 				entries.add(WISHING_WELL);
+				entries.add(SCULK_CHEST);
 				entries.add(NOT_PLAYER_HEAD);
 				entries.add(SCRAP_PICK);
 				entries.add(BRILLIANT_PICK);
@@ -295,5 +300,6 @@ public class TheAbandonedZoneMod implements ModInitializer {
 		AbandonedZonePotions.registerPotionsRecipes();
 		// item group
 		Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "all_items"), ALL_ITEMS);
+		Blocks.ENDER_CHEST
 	}
 }
