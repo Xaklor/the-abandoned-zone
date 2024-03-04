@@ -1,0 +1,9 @@
+    {
+      "variants": {
+        "facing=north": { "model": "the_abandoned_zone:block/not_player_head" },
+        "facing=east":  { "model": "the_abandoned_zone:block/not_player_head",  "y":  90 },
+        "facing=south": { "model": "the_abandoned_zone:block/not_player_head",  "y": 180 },
+        "facing=west":  { "model": "the_abandoned_zone:block/not_player_head",  "y": 270 }
+      }
+    }
+

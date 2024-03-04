@@ -13,6 +13,7 @@ import com.xaklor.util.disintegrator.DisintegratorScreenHandler;
 import com.xaklor.util.general.*;
 import com.xaklor.util.general.AbandonedZoneBlock.BlockType;
 import com.xaklor.util.general.AbandonedZoneTool.ToolType;
+import com.xaklor.util.other.NotPlayerHead;
 import com.xaklor.util.wells.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -20,6 +21,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
@@ -131,6 +133,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final AbandonedZoneBlock METAL_MATRIX = new AbandonedZoneBlock("metal_matrix", FabricBlockSettings.create().requiresTool().strength(20, 30).sounds(BlockSoundGroup.COPPER), BlockType.NORMAL);
 	public static final AbandonedZoneBlock METEORITE_CHUNK = new AbandonedZoneBlock("meteorite_chunk", FabricBlockSettings.create().requiresTool().strength(50, 1200).sounds(BlockSoundGroup.NETHERITE), BlockType.NORMAL);
 	public static final AbandonedZoneBlock MIGHT_BLOCK = new AbandonedZoneBlock("might_block", FabricBlockSettings.create().requiresTool().strength(30, 30).sounds(BlockSoundGroup.NETHERITE), BlockType.NORMAL);
+	public static final NotPlayerHead NOT_PLAYER_HEAD = new NotPlayerHead(FabricBlockSettings.create().strength(1.5f, 3));
 	public static final AbandonedZoneBlock ORANGE_CRYSTAL_STONE = new AbandonedZoneBlock("orange_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
 	public static final AbandonedZoneBlock PURPLE_CRYSTAL_STONE = new AbandonedZoneBlock("purple_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
 	public static final AbandonedZoneBlock RED_CRYSTAL_STONE = new AbandonedZoneBlock("red_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);
@@ -230,6 +233,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(ALCHEMY_BOX);
 				entries.add(GREEDY_WELL);
 				entries.add(WISHING_WELL);
+				entries.add(NOT_PLAYER_HEAD);
 				entries.add(SCRAP_PICK);
 				entries.add(BRILLIANT_PICK);
 				entries.add(BLUE_SAPPHIRE_PICK);
@@ -291,6 +295,5 @@ public class TheAbandonedZoneMod implements ModInitializer {
 		AbandonedZonePotions.registerPotionsRecipes();
 		// item group
 		Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "all_items"), ALL_ITEMS);
-
 	}
 }

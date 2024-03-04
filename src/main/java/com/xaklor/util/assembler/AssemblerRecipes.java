@@ -57,11 +57,10 @@ public class AssemblerRecipes {
                         8, 8, 32, 64, TheAbandonedZoneMod.HAMMER_HEAD));
                 add(new AssemblerRecipe(TheAbandonedZoneMod.STEEL_BONE, TheAbandonedZoneMod.ROYAL_HEART, TheAbandonedZoneMod.SAPPHIRE_DUST, TheAbandonedZoneMod.GEMSTONE_BLEND,
                         64, 64, 64, 64, TheAbandonedZoneMod.HAMMER_HANDLE));
-
-                // player "head"
+                add(new AssemblerRecipe(TheAbandonedZoneMod.ALCHEMIC_BRICKS.item, TheAbandonedZoneMod.CORPSE_DUST, TheAbandonedZoneMod.CORPSE_DUST, TheAbandonedZoneMod.CORPSE_DUST,
+                        1, 64, 64, 64, TheAbandonedZoneMod.NOT_PLAYER_HEAD.item));
             }
         };
-
     }
 
     public Item LookupRecipe(ItemStack in1, ItemStack in2) {

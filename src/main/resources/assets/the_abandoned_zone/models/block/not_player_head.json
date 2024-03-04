@@ -1,0 +1,21 @@
+{
+    "parent": "block/block",
+    "textures": {
+	"particle": "the_abandoned_zone:block/not_player_head",
+	"main": "the_abandoned_zone:block/not_player_head",
+	"face": "the_abandoned_zone:block/not_player_head"
+    },
+    "elements": [
+	{   "from": [ 4, 0, 4 ],
+            "to": [ 12, 8, 12 ],
+            "faces": {
+                "down":  { "uv": [ 8, 0, 16, 8 ], "texture": "#main", "cullface": "down" },
+                "up":    { "uv": [ 8, 0, 16, 8 ], "texture": "#main" },
+                "north": { "uv": [ 0, 0,  8, 8 ], "texture": "#face" },
+                "south": { "uv": [ 8, 0, 16, 8 ], "texture": "#main" },
+                "west":  { "uv": [ 8, 0, 16, 8 ], "texture": "#main" },
+                "east":  { "uv": [ 8, 0, 16, 8 ], "texture": "#main" }
+            }
+        }
+    ]
+}
