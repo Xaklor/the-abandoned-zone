@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "minecraft:block/sculk_chest"
+      "model": "the_abandoned_zone:block/sculk_chest"
     }
   }
 }

@@ -17,11 +17,11 @@
               "source": "block_entity"
             }
           ],
-          "name": "minecraft:sculk_chest"
+          "name": "the_abandoned_zone:sculk_chest"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "minecraft:blocks/sculk_chest"
+  "random_sequence": "the_abandoned_zone:blocks/sculk_chest"
 }
