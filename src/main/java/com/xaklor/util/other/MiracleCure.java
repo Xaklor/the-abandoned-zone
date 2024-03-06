@@ -1,4 +1,4 @@
-package com.xaklor.util;
+package com.xaklor.util.other;
 
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.LivingEntity;

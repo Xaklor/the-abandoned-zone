@@ -1,6 +1,5 @@
 package com.xaklor;
 
-import com.xaklor.util.*;
 import com.xaklor.util.alchemybox.AlchemyBox;
 import com.xaklor.util.alchemybox.AlchemyBoxEntity;
 import com.xaklor.util.alchemybox.AlchemyBoxRecipes;
@@ -13,9 +12,11 @@ import com.xaklor.util.disintegrator.DisintegratorScreenHandler;
 import com.xaklor.util.general.*;
 import com.xaklor.util.general.AbandonedZoneBlock.BlockType;
 import com.xaklor.util.general.AbandonedZoneTool.ToolType;
+import com.xaklor.util.other.MiracleCure;
 import com.xaklor.util.other.NotPlayerHead;
 import com.xaklor.util.sculkchest.SculkChest;
 import com.xaklor.util.sculkchest.SculkChestEntity;
+import com.xaklor.util.sculkchest.SculkLinker;
 import com.xaklor.util.wells.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -23,7 +24,6 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
@@ -172,6 +172,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final GreedyWell GREEDY_WELL = new GreedyWell(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.STONE));
 	public static final BlockEntityType<GreedyWellEntity> GREEDY_WELL_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, GREEDY_WELL.ID, FabricBlockEntityTypeBuilder.create(GreedyWellEntity::new, GREEDY_WELL).build());
 	public static final SculkChest SCULK_CHEST = new SculkChest(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.SCULK));
+	public static final SculkLinker SCULK_LINKER = new SculkLinker("sculk_linker", new FabricItemSettings().maxCount(1));
 	public static final BlockEntityType<SculkChestEntity> SCULK_CHEST_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, SCULK_CHEST.ID, FabricBlockEntityTypeBuilder.create(SculkChestEntity::new, SCULK_CHEST).build());
 	public static final WishingWell WISHING_WELL = new WishingWell(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.STONE));
 	public static final BlockEntityType<WishingWellEntity> WISHING_WELL_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, WISHING_WELL.ID, FabricBlockEntityTypeBuilder.create(WishingWellEntity::new, WISHING_WELL).build());
@@ -238,6 +239,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(GREEDY_WELL);
 				entries.add(WISHING_WELL);
 				entries.add(SCULK_CHEST);
+				entries.add(SCULK_LINKER);
 				entries.add(NOT_PLAYER_HEAD);
 				entries.add(SCRAP_PICK);
 				entries.add(BRILLIANT_PICK);

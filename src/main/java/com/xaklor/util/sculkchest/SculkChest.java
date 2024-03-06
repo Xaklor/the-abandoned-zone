@@ -84,10 +84,12 @@ public class SculkChest
         if (world.isClient) {
             return ActionResult.SUCCESS;
         }
-        NamedScreenHandlerFactory namedScreenHandlerFactory = state.createScreenHandlerFactory(world, pos);
-        if (namedScreenHandlerFactory != null) {
-            player.openHandledScreen(namedScreenHandlerFactory);
-            PiglinBrain.onGuardedBlockInteracted(player, true);
+        if (!world.getBlockState(pos.add(0, 1, 0)).isSolidBlock(world, pos.add(0, 1, 0))) {
+            NamedScreenHandlerFactory namedScreenHandlerFactory = state.createScreenHandlerFactory(world, pos);
+            if (namedScreenHandlerFactory != null) {
+                player.openHandledScreen(namedScreenHandlerFactory);
+                PiglinBrain.onGuardedBlockInteracted(player, true);
+            }
         }
         return ActionResult.CONSUME;
     }
@@ -100,7 +102,7 @@ public class SculkChest
     @Override
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return world.isClient ? SculkChest.checkType(type, TheAbandonedZoneMod.SCULK_CHEST_ENTITY, SculkChestEntity::clientTick) : null;
+        return world.isClient ? checkType(type, TheAbandonedZoneMod.SCULK_CHEST_ENTITY, SculkChestEntity::clientTick) : null;
     }
 
     @Override
@@ -145,6 +147,19 @@ public class SculkChest
         if (blockEntity instanceof SculkChestEntity) {
             ((SculkChestEntity)blockEntity).onScheduledTick();
         }
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (state.isOf(newState.getBlock())) {
+            return;
+        }
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof SculkChestEntity) {
+            ((SculkChestEntity) blockEntity).scatterContents();
+            // ItemScatterer.spawn(world, pos, (Inventory) blockEntity);
+        }
+        super.onStateReplaced(state, world, pos, newState, moved);
     }
 
     private void register() {
