@@ -13,12 +13,10 @@ import net.fabricmc.api.Environment;
 import net.minecraft.block.AbstractChestBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.ChestBlock;
 import net.minecraft.block.DoubleBlockProperties;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.LidOpenable;
-import net.minecraft.block.enums.ChestType;
 import net.minecraft.client.model.ModelData;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.model.ModelPartBuilder;
@@ -33,12 +31,8 @@ import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.block.entity.LightmapCoordinatesRetriever;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
-import net.minecraft.client.render.model.SpriteAtlasManager;
-import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.state.property.Property;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.world.World;
@@ -73,26 +67,23 @@ public class SculkChestRenderer<T extends BlockEntity>
     public void render(T entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         World world = entity.getWorld();
         boolean bl = world != null;
-        BlockState blockState = bl ? entity.getCachedState() : TheAbandonedZoneMod.SCULK_CHEST.getDefaultState().with((Property) SculkChest.FACING, (Comparable)Direction.SOUTH);
+        BlockState blockState = bl ? entity.getCachedState() : TheAbandonedZoneMod.SCULK_CHEST.getDefaultState().with(SculkChest.FACING, Direction.SOUTH);
         Block block = blockState.getBlock();
         if (!(block instanceof AbstractChestBlock)) {
             return;
         }
-        AbstractChestBlock abstractChestBlock = (AbstractChestBlock)block;
+        SculkChest chest = (SculkChest) block;
         matrices.push();
-        float f = ((Direction)blockState.get((Property)ChestBlock.FACING)).asRotation();
+        float f = (blockState.get(ChestBlock.FACING)).asRotation();
         matrices.translate(0.5f, 0.5f, 0.5f);
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-f));
         matrices.translate(-0.5f, -0.5f, -0.5f);
-        DoubleBlockProperties.PropertySource propertySource = bl ? abstractChestBlock.getBlockEntitySource(blockState, world, entity.getPos(), true) : DoubleBlockProperties.PropertyRetriever::getFallback;
+        DoubleBlockProperties.PropertySource propertySource = bl ? chest.getBlockEntitySource(blockState, world, entity.getPos(), true) : DoubleBlockProperties.PropertyRetriever::getFallback;
         float g = ((Float2FloatFunction)propertySource.apply(ChestBlock.getAnimationProgressRetriever(((LidOpenable)entity)))).get(tickDelta);
         g = 1.0f - g;
         g = 1.0f - g * g * g;
         int i = ((Int2IntFunction)propertySource.apply(new LightmapCoordinatesRetriever())).applyAsInt(light);
-        // SpriteIdentifier spriteIdentifier = TexturedRenderLayers.getChestTextureId(entity, chestType, this.christmas);
-        SpriteIdentifier spriteIdentifier = new SpriteIdentifier(new Identifier("textures/atlas/chest.png"), new Identifier("entity/chest/sculk"));
-        // SpriteIdentifier test = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier("textures/entity/sculk_chest/sculk_chest.png"));
-        // new Identifier("textures/entity/allay/allay.png")
+        SpriteIdentifier spriteIdentifier = new SpriteIdentifier(TexturedRenderLayers.CHEST_ATLAS_TEXTURE, chest.TEXTURE);
         VertexConsumer vertexConsumer = spriteIdentifier.getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
         this.render(matrices, vertexConsumer, this.lid, this.latch, this.base, g, i, overlay);
         matrices.pop();

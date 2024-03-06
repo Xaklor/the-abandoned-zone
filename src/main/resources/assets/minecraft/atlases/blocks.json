@@ -1,0 +1,5 @@
+{
+  "sources": [
+    { "type": "single", "resource": "the_abandoned_zone:model/sculk_chest" }
+  ]
+}

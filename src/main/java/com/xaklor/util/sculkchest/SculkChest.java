@@ -5,37 +5,23 @@ package com.xaklor.util.sculkchest;
 
 import com.xaklor.TheAbandonedZoneMod;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.AbstractChestBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.DoubleBlockProperties;
-import net.minecraft.block.HorizontalFacingBlock;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.block.Waterloggable;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.ChestBlockEntity;
-import net.minecraft.block.entity.EnderChestBlockEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.mob.PiglinBrain;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.inventory.EnderChestInventory;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -58,6 +44,7 @@ public class SculkChest
 
     public final Item item;
     public final Identifier ID = new Identifier(TheAbandonedZoneMod.MOD_ID, "sculk_chest");
+    public final Identifier TEXTURE = new Identifier(TheAbandonedZoneMod.MOD_ID, "model/sculk_chest");
 
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
@@ -117,21 +104,6 @@ public class SculkChest
     }
 
     @Override
-    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        for (int i = 0; i < 3; ++i) {
-            int j = random.nextInt(2) * 2 - 1;
-            int k = random.nextInt(2) * 2 - 1;
-            double d = (double)pos.getX() + 0.5 + 0.25 * (double)j;
-            double e = (float)pos.getY() + random.nextFloat();
-            double f = (double)pos.getZ() + 0.5 + 0.25 * (double)k;
-            double g = random.nextFloat() * (float)j;
-            double h = ((double)random.nextFloat() - 0.5) * 0.125;
-            double l = random.nextFloat() * (float)k;
-            world.addParticle(ParticleTypes.PORTAL, d, e, f, g, h, l);
-        }
-    }
-
-    @Override
     public BlockState rotate(BlockState state, BlockRotation rotation) {
         return state.with(FACING, rotation.rotate(state.get(FACING)));
     }
@@ -148,7 +120,7 @@ public class SculkChest
 
     @Override
     public FluidState getFluidState(BlockState state) {
-        if (state.get(WATERLOGGED).booleanValue()) {
+        if (state.get(WATERLOGGED)) {
             return Fluids.WATER.getStill(false);
         }
         return super.getFluidState(state);
@@ -156,7 +128,7 @@ public class SculkChest
 
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if (state.get(WATERLOGGED).booleanValue()) {
+        if (state.get(WATERLOGGED)) {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);

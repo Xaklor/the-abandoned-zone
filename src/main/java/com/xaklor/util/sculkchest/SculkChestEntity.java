@@ -5,7 +5,6 @@ package com.xaklor.util.sculkchest;
 
 import com.xaklor.TheAbandonedZoneMod;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -21,8 +20,8 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldEvents;
 import org.jetbrains.annotations.Nullable;
 
 public class SculkChestEntity
@@ -34,7 +33,8 @@ public class SculkChestEntity
 
         @Override
         protected void onContainerOpen(World world, BlockPos pos, BlockState state) {
-            world.playSound(null, (double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, SoundEvents.BLOCK_SCULK_SHRIEKER_SHRIEK, SoundCategory.BLOCKS, 0.5f, world.random.nextFloat() * 0.1f + 0.9f);
+            world.syncWorldEvent(WorldEvents.SCULK_SHRIEKS, pos, 0);
+            world.playSound(null, (double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, SoundEvents.BLOCK_SCULK_SHRIEKER_SHRIEK, SoundCategory.BLOCKS, 1f, world.random.nextFloat() * 0.1f + 0.9f);
         }
 
         @Override
