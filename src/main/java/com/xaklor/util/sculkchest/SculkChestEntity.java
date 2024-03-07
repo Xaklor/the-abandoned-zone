@@ -23,17 +23,12 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
-import net.minecraft.util.TypeFilter;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
-import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.stream.IntStream;
 
 public class SculkChestEntity
         extends BlockEntity
@@ -50,9 +45,9 @@ public class SculkChestEntity
 
         @Override
         protected void onContainerOpen(World world, BlockPos pos, BlockState state) {
+            world.syncWorldEvent(WorldEvents.SCULK_SHRIEKS, pos, 0);
             if (world instanceof ServerWorld serverWorld && targetChest != null && world.getBlockState(targetChest).isOf(Blocks.CHEST)) {
                 serverWorld.getChunkManager().addTicket(ChunkTicketType.PORTAL, new ChunkPos(targetChest), 2, targetChest);
-                serverWorld.syncWorldEvent(WorldEvents.SCULK_SHRIEKS, pos, 0);
             }
         }
 
@@ -70,7 +65,6 @@ public class SculkChestEntity
         protected boolean isPlayerViewing(PlayerEntity player) {
             if (player.currentScreenHandler instanceof GenericContainerScreenHandler) {
                 Inventory inventory = ((GenericContainerScreenHandler)player.currentScreenHandler).getInventory();
-                //Inventory targetInventory = SculkChestEntity.getTargetInventory(world, targetChest);
                 return inventory == SculkChestEntity.this || inventory instanceof ChestBlockEntity || inventory instanceof DoubleInventory;
             }
             return false;
@@ -131,7 +125,7 @@ public class SculkChestEntity
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        if (world instanceof ServerWorld sworld) {
+        if (world instanceof ServerWorld) {
             Inventory targetInventory = SculkChestEntity.getTargetInventory(world, targetChest);
             if (targetInventory != null) {
                 if (targetInventory.size() == 54) {
