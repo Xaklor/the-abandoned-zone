@@ -34,7 +34,6 @@ public class SculkChestScreenHandler extends GenericContainerScreenHandler {
 
     @Override
     public void onClosed(PlayerEntity player) {
-        TheAbandonedZoneMod.LOGGER.info("{}", canUse(player));
         super.onClosed(player);
         this.sculkInventory.onClose(player);
     }

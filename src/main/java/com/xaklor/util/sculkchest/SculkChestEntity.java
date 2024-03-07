@@ -118,7 +118,6 @@ public class SculkChestEntity
         if (!this.removed) {
             this.stateManager.updateViewerCount(this.getWorld(), this.getPos(), this.getCachedState());
             if (world instanceof ServerWorld sworld && targetChest != null && sworld.getBlockState(targetChest).isOf(Blocks.CHEST)) {
-                TheAbandonedZoneMod.LOGGER.info("chest found");
                 sworld.getChunkManager().addTicket(ChunkTicketType.PORTAL, new ChunkPos(targetChest), 2, targetChest);
             }
         }
