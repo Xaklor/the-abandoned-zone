@@ -1,10 +1,14 @@
 package com.xaklor.util.sculkchest;
 
+import com.xaklor.TheAbandonedZoneMod;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.screen.GenericContainerScreenHandler;
+import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.util.math.BlockPos;
 
 public class SculkChestScreenHandler extends GenericContainerScreenHandler {
     private final Inventory sculkInventory;
@@ -23,9 +27,14 @@ public class SculkChestScreenHandler extends GenericContainerScreenHandler {
         sculkInventory.onOpen(playerInventory.player);
     }
 
+    @Override
+    public boolean canUse(PlayerEntity player) {
+        return this.sculkInventory.canPlayerUse(player);
+    }
 
     @Override
     public void onClosed(PlayerEntity player) {
+        TheAbandonedZoneMod.LOGGER.info("{}", canUse(player));
         super.onClosed(player);
         this.sculkInventory.onClose(player);
     }

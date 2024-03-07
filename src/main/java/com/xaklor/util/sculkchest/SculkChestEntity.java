@@ -18,14 +18,19 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.server.world.ChunkTicketType;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
+import net.minecraft.util.TypeFilter;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
+import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.IntStream;
@@ -39,9 +44,16 @@ public class SculkChestEntity
     private final ViewerCountManager stateManager = new ViewerCountManager(){
 
         @Override
+        public void updateViewerCount(World world, BlockPos pos, BlockState state) {
+            super.updateViewerCount(world, pos, state);
+        }
+
+        @Override
         protected void onContainerOpen(World world, BlockPos pos, BlockState state) {
-            world.syncWorldEvent(WorldEvents.SCULK_SHRIEKS, pos, 0);
-            world.playSound(null, (double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, SoundEvents.BLOCK_SCULK_SHRIEKER_SHRIEK, SoundCategory.BLOCKS, 1f, world.random.nextFloat() * 0.1f + 0.9f);
+            if (world instanceof ServerWorld serverWorld && targetChest != null && world.getBlockState(targetChest).isOf(Blocks.CHEST)) {
+                serverWorld.getChunkManager().addTicket(ChunkTicketType.PORTAL, new ChunkPos(targetChest), 2, targetChest);
+                serverWorld.syncWorldEvent(WorldEvents.SCULK_SHRIEKS, pos, 0);
+            }
         }
 
         @Override
@@ -58,8 +70,8 @@ public class SculkChestEntity
         protected boolean isPlayerViewing(PlayerEntity player) {
             if (player.currentScreenHandler instanceof GenericContainerScreenHandler) {
                 Inventory inventory = ((GenericContainerScreenHandler)player.currentScreenHandler).getInventory();
-                Inventory targetInventory = SculkChestEntity.getTargetInventory(world, targetChest);
-                return inventory == SculkChestEntity.this || inventory == targetInventory || (inventory instanceof DoubleInventory && ((DoubleInventory)inventory).isPart(targetInventory));
+                //Inventory targetInventory = SculkChestEntity.getTargetInventory(world, targetChest);
+                return inventory == SculkChestEntity.this || inventory instanceof ChestBlockEntity || inventory instanceof DoubleInventory;
             }
             return false;
         }
@@ -84,6 +96,9 @@ public class SculkChestEntity
 
     public void onOpen(PlayerEntity player) {
         if (!this.removed && !player.isSpectator()) {
+            if (this.getWorld() instanceof ServerWorld serverWorld && this.targetChest != null && serverWorld.getBlockState(targetChest).isOf(Blocks.CHEST)) {
+                serverWorld.getChunkManager().addTicket(ChunkTicketType.PORTAL, new ChunkPos(targetChest), 2, targetChest);
+            }
             this.stateManager.openContainer(player, this.getWorld(), this.getPos(), this.getCachedState());
         }
     }
@@ -101,14 +116,11 @@ public class SculkChestEntity
 
     public void onScheduledTick() {
         if (!this.removed) {
-            /*
-            TheAbandonedZoneMod.LOGGER.info(String.valueOf(this.getCachedState()));
-            if (world instanceof ServerWorld sworld) {
-                ChunkPos chunklington = new ChunkPos(targetChest);
-                sworld.getChunkManager().addTicket(ChunkTicketType.FORCED, chunklington, 2, chunklington);
-            }
-             */
             this.stateManager.updateViewerCount(this.getWorld(), this.getPos(), this.getCachedState());
+            if (world instanceof ServerWorld sworld && targetChest != null && sworld.getBlockState(targetChest).isOf(Blocks.CHEST)) {
+                TheAbandonedZoneMod.LOGGER.info("chest found");
+                sworld.getChunkManager().addTicket(ChunkTicketType.PORTAL, new ChunkPos(targetChest), 2, targetChest);
+            }
         }
     }
 
@@ -121,16 +133,13 @@ public class SculkChestEntity
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
         if (world instanceof ServerWorld sworld) {
-            // ChunkPos chunklington = new ChunkPos(targetChest); <- null pointer on unlinked
-            // sworld.getChunkManager().addTicket(ChunkTicketType.FORCED, chunklington, 2, chunklington);
-            // sworld.getBlockState(targetChest);
             Inventory targetInventory = SculkChestEntity.getTargetInventory(world, targetChest);
             if (targetInventory != null) {
                 if (targetInventory.size() == 54) {
                     return SculkChestScreenHandler.createGeneric9x6(syncId, playerInventory, targetInventory, this);
                 }
                 return SculkChestScreenHandler.createGeneric9x3(syncId, playerInventory, targetInventory, this);
-            } else { return GenericContainerScreenHandler.createGeneric9x3(syncId, playerInventory, this); }
+            } else return GenericContainerScreenHandler.createGeneric9x3(syncId, playerInventory, this);
         }
         return GenericContainerScreenHandler.createGeneric9x3(syncId, playerInventory, this);
     }
