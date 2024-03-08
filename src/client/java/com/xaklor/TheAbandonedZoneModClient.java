@@ -1,19 +1,28 @@
 package com.xaklor;
 
-import com.xaklor.util.SculkChestRenderer;
+import com.xaklor.mobs.SteelSkeletonEntityRenderer;
+import com.xaklor.util.*;
 import com.xaklor.util.general.AbandonedZoneBlock;
-import com.xaklor.util.DisintegratorScreen;
-import com.xaklor.util.AlchemyBoxScreen;
-import com.xaklor.util.AssemblerScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
+import net.minecraft.client.model.Dilation;
+import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.model.*;
+import net.minecraft.util.Identifier;
 
 import static com.xaklor.TheAbandonedZoneMod.SCULK_CHEST_ENTITY;
 
 public class TheAbandonedZoneModClient implements ClientModInitializer {
+
+	public static final EntityModelLayer STEEL_SKELETON_MODEL = new EntityModelLayer(new Identifier("the_abandoned_zone", "steel_skeleton"), "main");
+	public static final EntityModelLayer STEEL_SKELETON_INNER_ARMOR = new EntityModelLayer(new Identifier("the_abandoned_zone", "steel_skeleton"), "inner_armor");
+	public static final EntityModelLayer STEEL_SKELETON_OUTER_ARMOR = new EntityModelLayer(new Identifier("the_abandoned_zone", "steel_skeleton"), "outer_armor");
+
 
 	@Override
 	public void onInitializeClient() {
@@ -27,6 +36,12 @@ public class TheAbandonedZoneModClient implements ClientModInitializer {
 		// BlockRenderLayerMap.INSTANCE.putBlock(TheAbandonedZoneMod.ASSEMBLER_ARMS, RenderLayer.getCutout());
 
 		BlockEntityRendererRegistry.register(SCULK_CHEST_ENTITY, SculkChestRenderer::new);
+
+		EntityRendererRegistry.register(TheAbandonedZoneMod.STEEL_SKELETON, SteelSkeletonEntityRenderer::new);
+		EntityModelLayerRegistry.registerModelLayer(STEEL_SKELETON_MODEL, SkeletonEntityModel::getTexturedModelData);
+		// see EntityModels
+		EntityModelLayerRegistry.registerModelLayer(STEEL_SKELETON_INNER_ARMOR, () -> TexturedModelData.of(ArmorEntityModel.getModelData(new Dilation(1.0f)), 64, 32));
+		EntityModelLayerRegistry.registerModelLayer(STEEL_SKELETON_OUTER_ARMOR, () -> TexturedModelData.of(ArmorEntityModel.getModelData(new Dilation(1.0f)), 64, 32));
 
 		// screen registrations
 		HandledScreens.register(TheAbandonedZoneMod.ALCHEMY_BOX_SCREEN_HANDLER, AlchemyBoxScreen::new);

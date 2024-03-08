@@ -96,6 +96,7 @@
 	"item.the_abandoned_zone.star_hammer": "Star Hammer",
 	"item.the_abandoned_zone.stardust": "Stardust",
 	"item.the_abandoned_zone.steel_bone": "Steel Bone",
+	"item.the_abandoned_zone.steel_skeleton_spawn_egg": "Steel Skeleton Spawn Egg",
 	"item.the_abandoned_zone.the_abandoned_tome": "The Abandoned Tome",
 	"item.the_abandoned_zone.waxy_dust": "Waxy Dust",
 	"item.the_abandoned_zone.wishing_pendant": "Wishing Pendant",
@@ -126,5 +127,9 @@
 	"item.minecraft.tipped_arrow.effect.wither_potion": "Arrow of the Black Lung",
 	"item.minecraft.tipped_arrow.effect.wither_potion_enhanced": "Arrow of the Black Lung",
 	"item.minecraft.tipped_arrow.effect.wither_potion_extended": "Arrow of the Black Lung",
+	"entity.the_abandoned_zone.steel_skeleton": "Steel Skeleton",
+	"subtitles.the_abandoned_zone.steel_skeleton_death": "Steel Skeleton dies",
+	"subtitles.the_abandoned_zone.steel_skeleton_idle": "Steel Skeleton clinks",
+	"subtitles.the_abandoned_zone.steel_skeleton_hurt": "Steel Skeleton hurt",
 	"itemGroup.the_abandoned_zone.all_items": "The Abandoned Zone"
 }

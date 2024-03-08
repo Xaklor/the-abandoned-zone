@@ -1,0 +1,31 @@
+{
+    "steel_skeleton_death": {
+        "subtitle": "subtitles.the_abandoned_zone.steel_skeleton_death",
+        "sounds": [
+            "the_abandoned_zone:steel_skeleton/death"
+        ]
+    },
+    "steel_skeleton_rare_death": {
+        "subtitle": "subtitles.the_abandoned_zone.steel_skeleton_death",
+        "sounds": [
+            "the_abandoned_zone:steel_skeleton/rare_death"
+        ]
+    },
+    "steel_skeleton_idle": {
+        "subtitle": "subtitles.the_abandoned_zone.steel_skeleton_idle",
+        "sounds": [
+            "the_abandoned_zone:steel_skeleton/idle1",
+            "the_abandoned_zone:steel_skeleton/idle2",
+            "the_abandoned_zone:steel_skeleton/idle3"
+        ]
+    },
+    "steel_skeleton_hurt": {
+        "subtitle": "subtitles.the_abandoned_zone.steel_skeleton_hurt",
+        "sounds": [
+            "the_abandoned_zone:steel_skeleton/hit1",
+            "the_abandoned_zone:steel_skeleton/hit2",
+            "the_abandoned_zone:steel_skeleton/hit3"
+        ]
+    }
+}
+

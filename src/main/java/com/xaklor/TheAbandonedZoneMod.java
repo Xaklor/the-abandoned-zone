@@ -12,6 +12,7 @@ import com.xaklor.util.disintegrator.DisintegratorScreenHandler;
 import com.xaklor.util.general.*;
 import com.xaklor.util.general.AbandonedZoneBlock.BlockType;
 import com.xaklor.util.general.AbandonedZoneTool.ToolType;
+import com.xaklor.util.mobs.SteelSkeletonEntity;
 import com.xaklor.util.other.MiracleCure;
 import com.xaklor.util.other.NotPlayerHead;
 import com.xaklor.util.sculkchest.SculkChest;
@@ -23,15 +24,21 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -185,6 +192,22 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final WellScores WELL_SCORES = new WellScores();
 	//endregion
 
+	//region MOBS
+	public static final EntityType<SteelSkeletonEntity> STEEL_SKELETON = Registry.register(Registries.ENTITY_TYPE, new Identifier(MOD_ID, "steel_skeleton"), FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, SteelSkeletonEntity::new).dimensions(EntityDimensions.fixed(0.75f, 2.4f)).fireImmune().build());
+	public static final Item STEEL_SKELETON_SPAWN_EGG = new SpawnEggItem(STEEL_SKELETON, 0x556266, 0xffffff, new FabricItemSettings());
+	//endregion
+
+	//region SOUNDS
+	public static final Identifier STEEL_SKELETON_DEATH_ID = new Identifier(MOD_ID, "steel_skeleton_death");
+	public static SoundEvent STEEL_SKELETON_DEATH = SoundEvent.of(STEEL_SKELETON_DEATH_ID);
+	public static final Identifier STEEL_SKELETON_RARE_DEATH_ID = new Identifier(MOD_ID, "steel_skeleton_rare_death");
+	public static SoundEvent STEEL_SKELETON_RARE_DEATH = SoundEvent.of(STEEL_SKELETON_RARE_DEATH_ID);
+	public static final Identifier STEEL_SKELETON_IDLE_ID = new Identifier(MOD_ID, "steel_skeleton_idle");
+	public static SoundEvent STEEL_SKELETON_IDLE = SoundEvent.of(STEEL_SKELETON_IDLE_ID);
+	public static final Identifier STEEL_SKELETON_HURT_ID = new Identifier(MOD_ID, "steel_skeleton_hurt");
+	public static SoundEvent STEEL_SKELETON_HURT = SoundEvent.of(STEEL_SKELETON_HURT_ID);
+	//endregion
+
 	// item group, this gives mod items their own creative inventory page
 	private static final ItemGroup ALL_ITEMS = FabricItemGroup.builder()
 			.icon(() -> new ItemStack(THE_ABANDONED_TOME))
@@ -293,6 +316,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(GEMSTONE_BLEND);
 				entries.add(SAPPHIRE_DUST);
 				entries.add(STARDUST);
+				entries.add(STEEL_SKELETON_SPAWN_EGG);
 			})
 			.build();
 
@@ -302,5 +326,13 @@ public class TheAbandonedZoneMod implements ModInitializer {
 		AbandonedZonePotions.registerPotionsRecipes();
 		// item group
 		Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "all_items"), ALL_ITEMS);
+
+		FabricDefaultAttributeRegistry.register(STEEL_SKELETON, SteelSkeletonEntity.createSteelSkeletonAttributes());
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "steel_skeleton_spawn_egg"), STEEL_SKELETON_SPAWN_EGG);
+
+		Registry.register(Registries.SOUND_EVENT, STEEL_SKELETON_DEATH_ID, STEEL_SKELETON_DEATH);
+		Registry.register(Registries.SOUND_EVENT, STEEL_SKELETON_RARE_DEATH_ID, STEEL_SKELETON_RARE_DEATH);
+		Registry.register(Registries.SOUND_EVENT, STEEL_SKELETON_IDLE_ID, STEEL_SKELETON_IDLE);
+		Registry.register(Registries.SOUND_EVENT, STEEL_SKELETON_HURT_ID, STEEL_SKELETON_HURT);
 	}
 }
