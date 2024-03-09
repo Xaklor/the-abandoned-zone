@@ -13,6 +13,7 @@ import com.xaklor.util.general.*;
 import com.xaklor.util.general.AbandonedZoneBlock.BlockType;
 import com.xaklor.util.general.AbandonedZoneTool.ToolType;
 import com.xaklor.util.mobs.SteelSkeletonEntity;
+import com.xaklor.util.mobs.ZombieKingEntity;
 import com.xaklor.util.other.MiracleCure;
 import com.xaklor.util.other.NotPlayerHead;
 import com.xaklor.util.sculkchest.SculkChest;
@@ -195,6 +196,8 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	//region MOBS
 	public static final EntityType<SteelSkeletonEntity> STEEL_SKELETON = Registry.register(Registries.ENTITY_TYPE, new Identifier(MOD_ID, "steel_skeleton"), FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, SteelSkeletonEntity::new).dimensions(EntityDimensions.fixed(0.75f, 2.4f)).fireImmune().build());
 	public static final Item STEEL_SKELETON_SPAWN_EGG = new SpawnEggItem(STEEL_SKELETON, 0x556266, 0xffffff, new FabricItemSettings());
+	public static final EntityType<ZombieKingEntity> ZOMBIE_KING = Registry.register(Registries.ENTITY_TYPE, new Identifier(MOD_ID, "zombie_king"), FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, ZombieKingEntity::new).dimensions(EntityDimensions.fixed(0.6f, 1.95f)).build());
+	public static final Item ZOMBIE_KING_SPAWN_EGG = new SpawnEggItem(ZOMBIE_KING, 0xd52639, 0x474f1e, new FabricItemSettings());
 	//endregion
 
 	//region SOUNDS
@@ -316,6 +319,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 				entries.add(GEMSTONE_BLEND);
 				entries.add(SAPPHIRE_DUST);
 				entries.add(STARDUST);
+				entries.add(ZOMBIE_KING_SPAWN_EGG);
 				entries.add(STEEL_SKELETON_SPAWN_EGG);
 			})
 			.build();
@@ -329,6 +333,9 @@ public class TheAbandonedZoneMod implements ModInitializer {
 
 		FabricDefaultAttributeRegistry.register(STEEL_SKELETON, SteelSkeletonEntity.createSteelSkeletonAttributes());
 		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "steel_skeleton_spawn_egg"), STEEL_SKELETON_SPAWN_EGG);
+
+		FabricDefaultAttributeRegistry.register(ZOMBIE_KING, ZombieKingEntity.createZombieKingAttributes());
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "zombie_king_spawn_egg"), ZOMBIE_KING_SPAWN_EGG);
 
 		Registry.register(Registries.SOUND_EVENT, STEEL_SKELETON_DEATH_ID, STEEL_SKELETON_DEATH);
 		Registry.register(Registries.SOUND_EVENT, STEEL_SKELETON_RARE_DEATH_ID, STEEL_SKELETON_RARE_DEATH);
