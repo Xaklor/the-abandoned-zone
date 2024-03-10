@@ -1,5 +1,6 @@
 package com.xaklor;
 
+import com.xaklor.util.other.AbandonedPortal;
 import com.xaklor.util.alchemybox.AlchemyBox;
 import com.xaklor.util.alchemybox.AlchemyBoxEntity;
 import com.xaklor.util.alchemybox.AlchemyBoxRecipes;
@@ -29,6 +30,7 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityDimensions;
@@ -37,11 +39,14 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.World;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,6 +65,8 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final List<AbandonedZoneBlock> BLOCKS = new ArrayList<>();
 	public static final Map<Item, List<Enchantment>> INCOMPATIBLE_ENCHANT_RULES = new HashMap<>();
 	public static final Map<Item, List<Enchantment>> COMPATIBLE_ENCHANT_RULES = new HashMap<>();
+	public static final RegistryKey<World> THE_ABANDONED_ZONE = RegistryKey.of(RegistryKeys.WORLD, new Identifier(MOD_ID, "the_abandoned_zone"));
+
 
 	//region ITEMS
 	public static final Item AMETHYST_DUST = new AbandonedZoneItem("amethyst_dust", new FabricItemSettings());
@@ -118,6 +125,7 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	//endregion
 
 	//region BLOCKS
+	public static final AbandonedPortal ABANDONED_PORTAL = new AbandonedPortal(FabricBlockSettings.create().noCollision().luminance(state -> 15).strength(-1.0f, 3600000.0f).dropsNothing().pistonBehavior(PistonBehavior.BLOCK));
 	public static final AbandonedZoneBlock ALCHEMIC_BRICKS = new AbandonedZoneBlock("alchemic_bricks", FabricBlockSettings.create().requiresTool().strength(3, 6).sounds(BlockSoundGroup.NETHER_BRICKS), BlockType.NORMAL);
 	public static final AssemblerArms ASSEMBLER_ARMS = new AssemblerArms(FabricBlockSettings.create().strength(1.5f, 3).sounds(BlockSoundGroup.METAL));
 	public static final AbandonedZoneBlock BLACK_CRYSTAL_STONE = new AbandonedZoneBlock("black_crystal_stone", FabricBlockSettings.create().nonOpaque().requiresTool().strength(1.5f, 1.5f).sounds(BlockSoundGroup.GLASS), BlockType.TRANSPARENT);

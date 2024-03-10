@@ -1,0 +1,11 @@
+{
+  "type": "the_abandoned_zone:the_abandoned_zone",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "minecraft:overworld",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "minecraft:plains"
+    }
+  }
+}
