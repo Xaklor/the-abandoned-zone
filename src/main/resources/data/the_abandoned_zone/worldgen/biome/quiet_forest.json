@@ -1,0 +1,100 @@
+{
+  "temperature": 0.8,
+  "downfall": 0.4,
+  "has_precipitation": true,
+  "effects": {
+    "sky_color": 6717951,
+    "fog_color": 9894650,
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "grass_color": 8828855,
+    "foliage_color": 6852772
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:spider",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "minecraft:zombie",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 95
+      },
+      {
+        "type": "minecraft:skeleton",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "minecraft:creeper",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "minecraft:enderman",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 50
+      }
+    ]
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [],
+    [
+      "minecraft:lake_lava_underground"
+    ],
+    [
+      "the_abandoned_zone:forest_rock"
+    ],
+    [],
+    [],
+    [],
+    [
+      "minecraft:ore_dirt",
+      "minecraft:ore_gravel",
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
+      "minecraft:ore_iron_small",
+      "minecraft:ore_gold",
+      "minecraft:ore_gold_lower",
+      "minecraft:ore_diamond",
+      "minecraft:ore_diamond_large",
+      "minecraft:ore_diamond_buried",
+      "the_abandoned_zone:ore_gneiss",
+      "the_abandoned_zone:ore_scrap",
+      "the_abandoned_zone:ore_brilliant",
+      "the_abandoned_zone:ore_sapphire",
+      "the_abandoned_zone:ore_sapphire_small",
+      "the_abandoned_zone:ore_sapphire_buried",
+      "minecraft:underwater_magma",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
+    ],
+    [],
+    [
+      "minecraft:spring_water"
+    ],
+    [
+      "minecraft:glow_lichen",
+      "minecraft:flower_meadow",
+      "minecraft:patch_pumpkin",
+      "the_abandoned_zone:trees_quiet_forest",
+      "the_abandoned_zone:patch_grass",
+      "minecraft:patch_sugar_cane"
+    ],
+    []
+  ]
+}

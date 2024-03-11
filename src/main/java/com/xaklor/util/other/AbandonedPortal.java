@@ -41,14 +41,6 @@ public class AbandonedPortal
         register();
     }
 
-    /*
-    @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new AbandonedPortalEntity(pos, state);
-    }
-
-     */
-
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
@@ -66,7 +58,7 @@ public class AbandonedPortal
                     if (serverWorld == null) {
                         return;
                     }
-                    FabricDimensions.teleport(entity, serverWorld, new TeleportTarget(new Vec3d(0, 80, 0), new Vec3d(0, 0, 0), 0, 0));
+                    FabricDimensions.teleport(entity, serverWorld, new TeleportTarget(new Vec3d(0, 100, 0), new Vec3d(0, 0, 0), 0, 0));
                 }
             }
         }
