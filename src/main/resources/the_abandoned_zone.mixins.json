@@ -6,7 +6,8 @@
     "EnchantmentCompatMixin",
     "EnchantmentHelperCompatMixin",
     "BrewingRecipeRegistryMixin",
-    "IronIngotMixin"
+    "IronIngotMixin",
+    "RainMixin"
   ],
   "injectors": {
     "defaultRequire": 1
