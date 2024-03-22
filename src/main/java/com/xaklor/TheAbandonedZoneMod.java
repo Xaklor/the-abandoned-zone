@@ -1,5 +1,8 @@
 package com.xaklor;
 
+import com.xaklor.util.features.BroadcasterFeature;
+import com.xaklor.util.features.CraneFeature;
+import com.xaklor.util.features.ReceiverFeature;
 import com.xaklor.util.other.AbandonedPortal;
 import com.xaklor.util.alchemybox.AlchemyBox;
 import com.xaklor.util.alchemybox.AlchemyBoxEntity;
@@ -47,6 +50,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -219,6 +223,15 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static SoundEvent STEEL_SKELETON_HURT = SoundEvent.of(STEEL_SKELETON_HURT_ID);
 	//endregion
 
+	//region FEATURES
+	public static final Identifier BROADCASTER_FEATURE_ID = new Identifier(MOD_ID, "broadcaster");
+	public static final BroadcasterFeature BROADCASTER_FEATURE = new BroadcasterFeature(DefaultFeatureConfig.CODEC);
+	public static final Identifier RECEIVER_FEATURE_ID = new Identifier(MOD_ID, "receiver");
+	public static final ReceiverFeature RECEIVER_FEATURE = new ReceiverFeature(DefaultFeatureConfig.CODEC);
+	public static final Identifier CRANE_FEATURE_ID = new Identifier(MOD_ID, "crane");
+	public static final CraneFeature CRANE_FEATURE = new CraneFeature(DefaultFeatureConfig.CODEC);
+	//endregion
+
 	// item group, this gives mod items their own creative inventory page
 	private static final ItemGroup ALL_ITEMS = FabricItemGroup.builder()
 			.icon(() -> new ItemStack(THE_ABANDONED_TOME))
@@ -349,5 +362,9 @@ public class TheAbandonedZoneMod implements ModInitializer {
 		Registry.register(Registries.SOUND_EVENT, STEEL_SKELETON_RARE_DEATH_ID, STEEL_SKELETON_RARE_DEATH);
 		Registry.register(Registries.SOUND_EVENT, STEEL_SKELETON_IDLE_ID, STEEL_SKELETON_IDLE);
 		Registry.register(Registries.SOUND_EVENT, STEEL_SKELETON_HURT_ID, STEEL_SKELETON_HURT);
+
+		Registry.register(Registries.FEATURE, BROADCASTER_FEATURE_ID, BROADCASTER_FEATURE);
+		Registry.register(Registries.FEATURE, RECEIVER_FEATURE_ID, RECEIVER_FEATURE);
+		Registry.register(Registries.FEATURE, CRANE_FEATURE_ID, CRANE_FEATURE);
 	}
 }

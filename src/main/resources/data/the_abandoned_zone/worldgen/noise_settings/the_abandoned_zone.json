@@ -389,26 +389,52 @@
                         "if_true": {
                           "type": "minecraft:biome",
                           "biome_is": [
-                            "minecraft_badlands"
+                            "the_abandoned_zone:scrapyard"
                           ]
                         },
                         "then_run": {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "max_threshold": 0.1976931348623157E308,
-                            "min_threshold": -0.11515151515151514,
-                            "noise": "minecraft:surface"
-                          },
-                          "then_run": {
-                            "type": "minecraft:block",
-                            "result_state": {
-                              "Name": "minecraft:podzol",
-                              "Properties": {
-                                "snowy": "false"
+                          "type": "minecraft:sequence",
+                          "sequence": [
+                            {
+                              "type": "minecraft:condition",
+                              "if_true": {
+                                "type": "minecraft:noise_threshold",
+                                "max_threshold": 1.7976931348623157E308,
+                                "min_threshold": 0.21212121212121213,
+                                "noise": "minecraft:surface"
+                              },
+                              "then_run": {
+                                "type": "minecraft:block",
+                                "result_state": {
+                                  "Name": "minecraft:gravel"
+                                }
+                              }
+                            },
+                            {
+                              "type": "minecraft:condition",
+                              "if_true": {
+                                "type": "minecraft:noise_threshold",
+                                "max_threshold": 1.7976931348623157E308,
+                                "min_threshold": -0.11515151515151514,
+                                "noise": "minecraft:surface"
+                              },
+                              "then_run": {
+                                "type": "minecraft:block",
+                                "result_state": {
+                                  "Name": "minecraft:coarse_dirt",
+                                  "Properties": {
+                                    "snowy": "false"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "type": "minecraft:block",
+                              "result_state": {
+                                "Name": "minecraft:smooth_basalt"
                               }
                             }
-                          }
+                          ]
                         }
                       },
                       {

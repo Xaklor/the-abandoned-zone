@@ -5,7 +5,7 @@
     "settings": "the_abandoned_zone:the_abandoned_zone",
     "biome_source": {
       "type": "minecraft:fixed",
-      "biome": "the_abandoned_zone:quiet_forest"
+      "biome": "the_abandoned_zone:scrapyard"
     }
   }
 }
