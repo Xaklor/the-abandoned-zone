@@ -57,5 +57,7 @@ public class TheAbandonedZoneModClient implements ClientModInitializer {
 		HandledScreens.register(TheAbandonedZoneMod.ALCHEMY_BOX_SCREEN_HANDLER, AlchemyBoxScreen::new);
 		HandledScreens.register(TheAbandonedZoneMod.ASSEMBLER_SCREEN_HANDLER, AssemblerScreen::new);
 		HandledScreens.register(TheAbandonedZoneMod.DISINTEGRATOR_SCREEN_HANDLER, DisintegratorScreen::new);
+
+		// BackgroundRenderer and WorldRenderer
 	}
 }

@@ -438,6 +438,35 @@
                         }
                       },
                       {
+                        "type": "minecraft:condition",
+                        "if_true": {
+                          "type": "minecraft:biome",
+                          "biome_is": [
+                            "the_abandoned_zone:graveyard"
+                          ]
+                        },
+                        "then_run": {
+                          "type": "minecraft:sequence",
+                          "sequence": [
+                            {
+                              "type": "minecraft:condition",
+                              "if_true": {
+                                "type": "minecraft:noise_threshold",
+                                "max_threshold": 0.6976931348623157E308,
+                                "min_threshold": 0.21212121212121213,
+                                "noise": "minecraft:surface"
+                              },
+                              "then_run": {
+                                "type": "minecraft:block",
+                                "result_state": {
+                                  "Name": "minecraft:soul_soil"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
                         "type": "minecraft:sequence",
                         "sequence": [
                           {

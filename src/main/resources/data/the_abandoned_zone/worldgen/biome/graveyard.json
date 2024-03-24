@@ -3,47 +3,14 @@
   "downfall": 0.4,
   "has_precipitation": false,
   "effects": {
-    "sky_color": 6717951,
-    "fog_color": 9894650,
-    "water_color": 4159204,
-    "water_fog_color": 329011,
-    "grass_color": 8828855,
-    "foliage_color": 6852772
+    "sky_color": 4805733,
+    "fog_color": 9575709,
+    "water_color": 9575709,
+    "water_fog_color": 6301736,
+    "grass_color": 2567720,
+    "foliage_color": 2172193
   },
-  "spawners": {
-    "monster": [
-      {
-        "type": "minecraft:spider",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 100
-      },
-      {
-        "type": "minecraft:zombie",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 95
-      },
-      {
-        "type": "minecraft:skeleton",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 100
-      },
-      {
-        "type": "minecraft:creeper",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 100
-      },
-      {
-        "type": "minecraft:enderman",
-        "maxCount": 4,
-        "minCount": 1,
-        "weight": 50
-      }
-    ]
-  },
+  "spawners": {},
   "spawn_costs": {},
   "carvers": {},
   "features": [
@@ -52,7 +19,7 @@
       "minecraft:lake_lava_underground"
     ],
     [
-      "the_abandoned_zone:forest_rock"
+      "the_abandoned_zone:gravestone"
     ],
     [],
     [],
@@ -78,6 +45,7 @@
       "the_abandoned_zone:ore_sapphire",
       "the_abandoned_zone:ore_sapphire_small",
       "the_abandoned_zone:ore_sapphire_buried",
+      "the_abandoned_zone:patch_soul_fire",
       "minecraft:underwater_magma",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
@@ -85,15 +53,12 @@
     ],
     [],
     [
-      "minecraft:spring_water"
+      "minecraft:spring_water",
+      "minecraft:spring_lava"
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:flower_meadow",
-      "minecraft:patch_pumpkin",
-      "the_abandoned_zone:trees_quiet_forest",
-      "the_abandoned_zone:patch_grass",
-      "minecraft:patch_sugar_cane"
+      "the_abandoned_zone:flower_graveyard"
     ],
     []
   ]
