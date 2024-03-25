@@ -1,9 +1,6 @@
 package com.xaklor;
 
-import com.xaklor.util.features.BroadcasterFeature;
-import com.xaklor.util.features.CraneFeature;
-import com.xaklor.util.features.GravestoneFeature;
-import com.xaklor.util.features.ReceiverFeature;
+import com.xaklor.util.features.*;
 import com.xaklor.util.other.AbandonedPortal;
 import com.xaklor.util.alchemybox.AlchemyBox;
 import com.xaklor.util.alchemybox.AlchemyBoxEntity;
@@ -233,6 +230,8 @@ public class TheAbandonedZoneMod implements ModInitializer {
 	public static final CraneFeature CRANE_FEATURE = new CraneFeature(DefaultFeatureConfig.CODEC);
 	public static final Identifier GRAVESTONE_FEATURE_ID = new Identifier(MOD_ID, "gravestone");
 	public static final GravestoneFeature GRAVESTONE_FEATURE = new GravestoneFeature(DefaultFeatureConfig.CODEC);
+	public static final Identifier CALCITE_SPIKE_FEATURE_ID = new Identifier(MOD_ID, "calcite_spike");
+	public static final CalciteSpikeFeature CALCITE_SPIKE_FEATURE = new CalciteSpikeFeature(DefaultFeatureConfig.CODEC);
 	//endregion
 
 	// item group, this gives mod items their own creative inventory page
@@ -370,5 +369,6 @@ public class TheAbandonedZoneMod implements ModInitializer {
 		Registry.register(Registries.FEATURE, RECEIVER_FEATURE_ID, RECEIVER_FEATURE);
 		Registry.register(Registries.FEATURE, CRANE_FEATURE_ID, CRANE_FEATURE);
 		Registry.register(Registries.FEATURE, GRAVESTONE_FEATURE_ID, GRAVESTONE_FEATURE);
+		Registry.register(Registries.FEATURE, CALCITE_SPIKE_FEATURE_ID, CALCITE_SPIKE_FEATURE);
 	}
 }

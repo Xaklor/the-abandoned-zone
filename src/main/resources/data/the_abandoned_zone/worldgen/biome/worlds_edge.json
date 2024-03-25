@@ -1,0 +1,102 @@
+{
+  "temperature": 0.8,
+  "downfall": 0.4,
+  "has_precipitation": false,
+  "effects": {
+    "sky_color": 13295103,
+    "fog_color": 16777215,
+    "water_color": 6473719,
+    "water_fog_color": 937396,
+    "grass_color": 16053492,
+    "foliage_color": 16777215
+  },
+  "spawners": {
+    "ambient": [
+      {
+        "type": "minecraft:bat",
+        "maxCount": 8,
+        "minCount": 8,
+        "weight": 10
+      }
+    ],
+    "monster": [
+      {
+        "type": "minecraft:spider",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 50
+      },
+      {
+        "type": "minecraft:zombie",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 95
+      },
+      {
+        "type": "minecraft:skeleton",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "minecraft:creeper",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "minecraft:enderman",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 50
+      }
+    ]
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [],
+    [
+      "minecraft:lake_lava_underground"
+    ],
+    [
+      "the_abandoned_zone:calcite_spike"
+    ],
+    [],
+    [],
+    [],
+    [
+      "minecraft:ore_dirt",
+      "minecraft:ore_gravel",
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
+      "minecraft:ore_iron_small",
+      "minecraft:ore_gold",
+      "minecraft:ore_gold_lower",
+      "minecraft:ore_diamond",
+      "minecraft:ore_diamond_large",
+      "minecraft:ore_diamond_buried",
+      "the_abandoned_zone:ore_gneiss",
+      "the_abandoned_zone:ore_scrap",
+      "the_abandoned_zone:ore_brilliant",
+      "the_abandoned_zone:ore_sapphire",
+      "the_abandoned_zone:ore_sapphire_small",
+      "the_abandoned_zone:ore_sapphire_buried",
+      "minecraft:underwater_magma",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
+    ],
+    [],
+    [],
+    [
+      "minecraft:glow_lichen",
+      "the_abandoned_zone:flower_worlds_edge"
+    ],
+    []
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "feature": "the_abandoned_zone:flower_worlds_edge",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 5,
+          "max_inclusive": 16
+        }
+      }
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    }
+  ]
+}
