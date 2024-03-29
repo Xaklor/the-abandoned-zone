@@ -25,7 +25,7 @@
       "y_scale": 0.5
     },
     "continents": "minecraft:overworld/continents",
-    "depth": "minecraft:overworld/depth",
+    "depth": "the_abandoned_zone:the_abandoned_zone/depth",
     "erosion": "minecraft:overworld/erosion",
     "final_density": {
       "type": "minecraft:min",
